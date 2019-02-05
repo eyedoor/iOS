@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE090B3F1CD56929F293CAAF /* Pods_eyeDoor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47159F2A7BB464270291E891 /* Pods_eyeDoor.framework */; };
 		FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF74124E2202546000826CF7 /* AppDelegate.swift */; };
-		FF7412512202546000826CF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7412502202546000826CF7 /* ViewController.swift */; };
 		FF7412542202546000826CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7412522202546000826CF7 /* Main.storyboard */; };
 		FF7412562202546200826CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7412552202546200826CF7 /* Assets.xcassets */; };
 		FF7412592202546200826CF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7412572202546200826CF7 /* LaunchScreen.storyboard */; };
+		FFAA2B292202592F0020AA7D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B282202592F0020AA7D /* MenuViewController.swift */; };
+		FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2A22025E200020AA7D /* Gradient.swift */; };
+		FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */; };
+		FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4601B442C2F996E74F1CB4A5 /* Pods-eyeDoor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eyeDoor.release.xcconfig"; path = "Pods/Target Support Files/Pods-eyeDoor/Pods-eyeDoor.release.xcconfig"; sourceTree = "<group>"; };
+		47159F2A7BB464270291E891 /* Pods_eyeDoor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eyeDoor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5FF22A72F7FA2BBD835B7D3 /* Pods-eyeDoor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eyeDoor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eyeDoor/Pods-eyeDoor.debug.xcconfig"; sourceTree = "<group>"; };
 		FF74124B2202546000826CF7 /* eyeDoor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eyeDoor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF74124E2202546000826CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF7412502202546000826CF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FF7412532202546000826CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF7412552202546200826CF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF7412582202546200826CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF74125A2202546200826CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFAA2B282202592F0020AA7D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		FFAA2B2A22025E200020AA7D /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE090B3F1CD56929F293CAAF /* Pods_eyeDoor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5406DEB98167477677F363 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5FF22A72F7FA2BBD835B7D3 /* Pods-eyeDoor.debug.xcconfig */,
+				4601B442C2F996E74F1CB4A5 /* Pods-eyeDoor.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1B06D02D1F97362EFB270AB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47159F2A7BB464270291E891 /* Pods_eyeDoor.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FF7412422202546000826CF7 = {
 			isa = PBXGroup;
 			children = (
 				FF74124D2202546000826CF7 /* eyeDoor */,
 				FF74124C2202546000826CF7 /* Products */,
+				0D5406DEB98167477677F363 /* Pods */,
+				1B06D02D1F97362EFB270AB3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,11 +85,14 @@
 			isa = PBXGroup;
 			children = (
 				FF74124E2202546000826CF7 /* AppDelegate.swift */,
-				FF7412502202546000826CF7 /* ViewController.swift */,
 				FF7412522202546000826CF7 /* Main.storyboard */,
 				FF7412552202546200826CF7 /* Assets.xcassets */,
 				FF7412572202546200826CF7 /* LaunchScreen.storyboard */,
 				FF74125A2202546200826CF7 /* Info.plist */,
+				FFAA2B282202592F0020AA7D /* MenuViewController.swift */,
+				FFAA2B2A22025E200020AA7D /* Gradient.swift */,
+				FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */,
+				FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */,
 			);
 			path = eyeDoor;
 			sourceTree = "<group>";
@@ -71,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF74125D2202546200826CF7 /* Build configuration list for PBXNativeTarget "eyeDoor" */;
 			buildPhases = (
+				867A13EB79A38C77F861EFC0 /* [CP] Check Pods Manifest.lock */,
 				FF7412472202546000826CF7 /* Sources */,
 				FF7412482202546000826CF7 /* Frameworks */,
 				FF7412492202546000826CF7 /* Resources */,
+				75CD3BC625C2483B4AD60457 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +165,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		75CD3BC625C2483B4AD60457 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-eyeDoor/Pods-eyeDoor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eyeDoor/Pods-eyeDoor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		867A13EB79A38C77F861EFC0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eyeDoor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF7412472202546000826CF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF7412512202546000826CF7 /* ViewController.swift in Sources */,
+				FFAA2B292202592F0020AA7D /* MenuViewController.swift in Sources */,
+				FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */,
 				FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */,
+				FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */,
+				FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +365,7 @@
 		};
 		FF74125E2202546200826CF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5FF22A72F7FA2BBD835B7D3 /* Pods-eyeDoor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +384,7 @@
 		};
 		FF74125F2202546200826CF7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4601B442C2F996E74F1CB4A5 /* Pods-eyeDoor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
