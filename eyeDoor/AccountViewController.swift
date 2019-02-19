@@ -16,7 +16,12 @@ class AccountViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func logoutAction(_ sender: Any) {
+        //log user out
+        //if successful, then go back to start
+        self.performSegue(withIdentifier: "accountToStart", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

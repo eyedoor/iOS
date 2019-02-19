@@ -10,6 +10,7 @@
 		AE090B3F1CD56929F293CAAF /* Pods_eyeDoor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47159F2A7BB464270291E891 /* Pods_eyeDoor.framework */; };
 		FF5CE0A1221C565000DFA386 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A0221C565000DFA386 /* StartViewController.swift */; };
 		FF5CE0A3221C5A4400DFA386 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */; };
+		FF5CE0A5221C5D4100DFA386 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */; };
 		FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF74124E2202546000826CF7 /* AppDelegate.swift */; };
 		FF7412542202546000826CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7412522202546000826CF7 /* Main.storyboard */; };
 		FF7412562202546200826CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7412552202546200826CF7 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		F5FF22A72F7FA2BBD835B7D3 /* Pods-eyeDoor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eyeDoor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eyeDoor/Pods-eyeDoor.debug.xcconfig"; sourceTree = "<group>"; };
 		FF5CE0A0221C565000DFA386 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FF74124B2202546000826CF7 /* eyeDoor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eyeDoor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF74124E2202546000826CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF7412532202546000826CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */,
 				FF5CE0A0221C565000DFA386 /* StartViewController.swift */,
 				FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */,
+				FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */,
 			);
 			path = eyeDoor;
 			sourceTree = "<group>";
@@ -131,6 +134,9 @@
 		FF7412432202546000826CF7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					2,
+				);
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Nathan Schlechte";
@@ -225,6 +231,7 @@
 			files = (
 				FF5CE0A3221C5A4400DFA386 /* LoginViewController.swift in Sources */,
 				FFAA2B292202592F0020AA7D /* MenuViewController.swift in Sources */,
+				FF5CE0A5221C5D4100DFA386 /* SignUpViewController.swift in Sources */,
 				FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */,
 				FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */,
 				FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */,

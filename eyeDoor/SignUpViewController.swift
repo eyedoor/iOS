@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  eyeDoor
 //
 //  Created by Nathan Schlechte on 2/19/19.
@@ -8,17 +8,19 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController,UITextFieldDelegate  {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var confirmPassTextField: UITextField!
+    @IBOutlet weak var signupButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        confirmPassTextField.delegate = self
         emailTextField.tag = 0
         // Do any additional setup after loading the view.
     }
@@ -36,7 +38,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-
+    @IBAction func signupAction(_ sender: Any) {
+        
+        //if passwords dont match, send alert to user
+        if passwordTextField.text != confirmPassTextField.text {
+            let alertController = UIAlertController(title: "Password Incorrect", message: "Please re-type password", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            //create user
+            self.performSegue(withIdentifier: "signupToHome", sender: self)
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
