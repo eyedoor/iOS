@@ -24,6 +24,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
         passwordTextField.delegate = self
         confirmPassTextField.delegate = self
         emailTextField.tag = 0
+        signupButton.isEnabled = false
+        [firstnameTextField, lastnameTextField, emailTextField, passwordTextField, confirmPassTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
         // Do any additional setup after loading the view.
     }
     
@@ -50,8 +52,34 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //create user
+            print("creating user")
+            QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!)
             self.performSegue(withIdentifier: "signupToHome", sender: self)
         }
+    }
+    
+    @objc func editingChanged(_ textField: UITextField) {
+        //print(textField)
+        if textField.text!.count == 1 {
+            if textField.text!.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let first = firstnameTextField.text, !first.isEmpty,
+            let last = lastnameTextField.text, !last.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty,
+            let confirmPass = confirmPassTextField.text, !confirmPass.isEmpty
+            else {
+                print("signup not enabled")
+                signupButton.isEnabled = false
+                return
+        }
+        print("signup enabled")
+        signupButton.isEnabled = true
+        
     }
     
     

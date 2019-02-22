@@ -558,7 +558,7 @@
                                                 <rect key="frame" x="0.0" y="234" width="382" height="33.666666666666686"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="new-password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="new-password"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re-Type Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-gk-er3">
                                                 <rect key="frame" x="0.0" y="267.66666666666669" width="382" height="33.333333333333314"/>
@@ -570,7 +570,7 @@
                                                 <rect key="frame" x="0.0" y="301" width="382" height="33.333333333333314"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="new-password"/>
                                             </textField>
                                         </subviews>
                                         <constraints>

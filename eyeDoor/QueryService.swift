@@ -10,17 +10,21 @@ import Foundation
 
 class QueryService {
     
-    func creatUser(email: String, password: String, firstname: String, lastname: String){
+    static func createUser(email: String, password: String, firstname: String, lastname: String){
         let url = URL(string: "https://joseph-frank.com/api/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let parameters: [String:Any] = [
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let json: [String:Any] = [
             "email" : email,
             "password" : password,
             "firstname" : firstname,
             "lastname" : lastname
         ]
-        request.httpBody = parameters.percentEscaped().data(using: .utf8)
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let response = response as? HTTPURLResponse,
@@ -45,24 +49,3 @@ class QueryService {
     
 }
 
-extension Dictionary {
-    func percentEscaped() -> String {
-        return map { (key, value) in
-            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-            return escapedKey + "=" + escapedValue
-            }
-            .joined(separator: "&")
-    }
-}
-
-extension CharacterSet {
-    static let urlQueryValueAllowed: CharacterSet = {
-        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
-        let subDelimitersToEncode = "!$&'()*+,;="
-        
-        var allowed = CharacterSet.urlQueryAllowed
-        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
-        return allowed
-    }()
-}
