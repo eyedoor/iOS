@@ -53,8 +53,15 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
         } else {
             //create user
             print("creating user")
-            QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!)
-            self.performSegue(withIdentifier: "signupToHome", sender: self)
+            if (QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!) == true) {
+                self.performSegue(withIdentifier: "signupToHome", sender: self)
+            } else {
+                let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -73,11 +80,11 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
             let password = passwordTextField.text, !password.isEmpty,
             let confirmPass = confirmPassTextField.text, !confirmPass.isEmpty
             else {
-                print("signup not enabled")
+                //print("signup not enabled")
                 signupButton.isEnabled = false
                 return
         }
-        print("signup enabled")
+        //print("signup enabled")
         signupButton.isEnabled = true
         
     }

@@ -454,7 +454,8 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ASX-U4-mug" kind="presentation" id="WeR-6d-Xzi"/>
+                                            <action selector="loginAction:" destination="6oK-bK-aa9" eventType="touchUpInside" id="Rdz-3I-HEK"/>
+                                            <segue destination="ASX-U4-mug" kind="presentation" identifier="loginToHome" id="WeR-6d-Xzi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -652,6 +653,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pbf-XM-SWp"/>
-        <segue reference="OMQ-8D-3oJ"/>
+        <segue reference="WeR-6d-Xzi"/>
     </inferredMetricsTieBreakers>
 </document>

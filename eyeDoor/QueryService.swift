@@ -10,7 +10,7 @@ import Foundation
 
 class QueryService {
     
-    static func createUser(email: String, password: String, firstname: String, lastname: String){
+    static func createUser(email: String, password: String, firstname: String, lastname: String) -> Bool{
         let url = URL(string: "https://joseph-frank.com/api/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -22,9 +22,39 @@ class QueryService {
             "lastname" : lastname
         ]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        
         request.httpBody = jsonData
         
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let response = response as? HTTPURLResponse,
+                error == nil else {
+                    print("error", error ?? "unknown error")
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                return 
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+        return true
+    }
+    
+    static func loginUser(email: String, password: String) -> Bool{
+        let url = URL(string: "https://joseph-frank.com/api/login")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let json: [String:Any] = [
+            "email" : email,
+            "password" : password
+        ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let response = response as? HTTPURLResponse,
@@ -41,10 +71,9 @@ class QueryService {
             
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
-            
         }
         task.resume()
-        
+        return true
     }
     
 }

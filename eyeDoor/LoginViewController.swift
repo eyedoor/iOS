@@ -20,6 +20,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         emailTextField.tag = 0
+        loginButton.isEnabled = false
+        [emailTextField, passwordTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
         // Do any additional setup after loading the view.
     }
     
@@ -36,7 +38,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-
+    @IBAction func loginAction(_ sender: Any) {
+        //login user
+        print("logging in user")
+        if (QueryService.loginUser(email: emailTextField.text!, password: passwordTextField.text!) == true) {
+            self.performSegue(withIdentifier: "loginToHome", sender: self)
+        } else {
+            let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func editingChanged(_ textField: UITextField) {
+        if textField.text!.count == 1 {
+            if textField.text!.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty
+            else {
+                loginButton.isEnabled = false
+                return
+        }
+        loginButton.isEnabled = true
+        
+    }
+    
     /*
     // MARK: - Navigation
 
