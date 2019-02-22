@@ -19,6 +19,8 @@ class AccountViewController: UIViewController {
     @IBAction func logoutAction(_ sender: Any) {
         //log user out
         //if successful, then go back to start
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "LoggedIn")
         self.performSegue(withIdentifier: "accountToStart", sender: self)
     }
     

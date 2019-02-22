@@ -12,6 +12,11 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        let isLoggedIn = defaults.bool(forKey: "LoggedIn")
+        if (isLoggedIn == true){
+            self.performSegue(withIdentifier: "startToHome", sender: self)
+        }
 
         // Do any additional setup after loading the view.
     }

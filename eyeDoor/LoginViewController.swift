@@ -42,6 +42,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //login user
         print("logging in user")
         if (QueryService.loginUser(email: emailTextField.text!, password: passwordTextField.text!) == true) {
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "LoggedIn")
             self.performSegue(withIdentifier: "loginToHome", sender: self)
         } else {
             let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
