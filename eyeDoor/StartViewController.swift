@@ -15,6 +15,8 @@ class StartViewController: UIViewController {
         let defaults = UserDefaults.standard
         let isLoggedIn = defaults.bool(forKey: "LoggedIn")
         if (isLoggedIn == true){
+            let token = defaults.string(forKey: "token")
+            //call api for token verification
             self.performSegue(withIdentifier: "startToHome", sender: self)
         }
 

@@ -21,6 +21,7 @@ class AccountViewController: UIViewController {
         //if successful, then go back to start
         let defaults = UserDefaults.standard
         defaults.set(false, forKey: "LoggedIn")
+        defaults.set(nil, forKey: "token")
         self.performSegue(withIdentifier: "accountToStart", sender: self)
     }
     

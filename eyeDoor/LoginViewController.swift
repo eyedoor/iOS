@@ -41,17 +41,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginAction(_ sender: Any) {
         //login user
         print("logging in user")
-        if (QueryService.loginUser(email: emailTextField.text!, password: passwordTextField.text!) == true) {
-            let defaults = UserDefaults.standard
-            defaults.set(true, forKey: "LoggedIn")
-            self.performSegue(withIdentifier: "loginToHome", sender: self)
-        } else {
-            let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        QueryService.loginUser(email: emailTextField.text!, password: passwordTextField.text!, completion: {(auth: Bool) -> Void in
+            print("auth is \(auth)")
+            if(auth == true){
+                let defaults = UserDefaults.standard
+                defaults.set(true, forKey: "LoggedIn")
+                self.performSegue(withIdentifier: "loginToHome", sender: self)
+            } else {
+                let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
             
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
+        })
     }
     
     @objc func editingChanged(_ textField: UITextField) {

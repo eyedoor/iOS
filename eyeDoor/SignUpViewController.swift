@@ -53,17 +53,39 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
         } else {
             //create user
             print("creating user")
-            if (QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!) == true) {
-                self.performSegue(withIdentifier: "signupToHome", sender: self)
-            } else {
-                let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, completion: {(auth: Bool) -> Void in
                 
-                alertController.addAction(defaultAction)
-                self.present(alertController, animated: true, completion: nil)
-            }
+                if (auth == true) {
+                    print("logging user in")
+                
+                    QueryService.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, completion: {(auth: Bool) -> Void in
+                        print("auth is \(auth)")
+                        if(auth == true){
+                            let defaults = UserDefaults.standard
+                            defaults.set(true, forKey: "LoggedIn")
+                            self.performSegue(withIdentifier: "signupToHome", sender: self)
+                        } else {
+                            let alertController = UIAlertController(title: "Error", message: "Could not log into new account", preferredStyle: .alert)
+                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                            
+                            alertController.addAction(defaultAction)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    })
+                } else {
+                    let alertController = UIAlertController(title: "Error", message: "User not created", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+                
         }
     }
+        
+        
+    
     
     @objc func editingChanged(_ textField: UITextField) {
         //print(textField)
