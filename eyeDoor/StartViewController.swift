@@ -18,8 +18,8 @@ class StartViewController: UIViewController {
         if (isLoggedIn == true){
             let token = defaults.string(forKey: "token")
             //call api for token verification
-            validateFace()
-            //self.performSegue(withIdentifier: "startToHome", sender: self)
+            //validateFace()
+            self.performSegue(withIdentifier: "startToHome", sender: self)
         }
 
         // Do any additional setup after loading the view.
