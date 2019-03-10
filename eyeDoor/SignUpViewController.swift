@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPassTextField.delegate = self
-        emailTextField.tag = 0
+        firstnameTextField.tag = 0
         signupButton.isEnabled = false
         [firstnameTextField, lastnameTextField, emailTextField, passwordTextField, confirmPassTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
         // Do any additional setup after loading the view.
