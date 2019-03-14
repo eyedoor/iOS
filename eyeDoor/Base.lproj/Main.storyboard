@@ -181,26 +181,94 @@
         <!--My People-->
         <scene sceneID="abK-Rr-QdP">
             <objects>
-                <viewController id="QMx-bU-daf" sceneMemberID="viewController">
+                <viewController id="QMx-bU-daf" customClass="MyPeopleViewController" customModule="eyeDoor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YC4-Js-hCT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My People" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2q-28-ALQ">
-                                <rect key="frame" x="139" y="381" width="81" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibe-Ph-XFz" customClass="DesignableView" customModule="eyeDoor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientColor1">
+                                        <color key="value" red="0.76078431369999999" green="0.91372549020000005" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientColor2">
+                                        <color key="value" red="0.63137254899999995" green="0.76862745099999996" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HAu-xy-V8j">
+                                <rect key="frame" x="16" y="16" width="382" height="662"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8ZDF%t1cQ16%2wz3eQBwwg_thumb_10d4" translatesAutoresizingMaskIntoConstraints="NO" id="BTn-Iw-bxf" userLabel="Person1">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="264"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zQt-bO-IkN">
+                                        <rect key="frame" x="0.0" y="280" width="382" height="382"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="MYf-BA-go6">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="183"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8ZDF%t1cQ16%2wz3eQBwwg_thumb_10d4" translatesAutoresizingMaskIntoConstraints="NO" id="GDe-l0-aPw" userLabel="Person2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="183"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8ZDF%t1cQ16%2wz3eQBwwg_thumb_10d4" translatesAutoresizingMaskIntoConstraints="NO" id="m3z-jn-Rbi" userLabel="Person3">
+                                                        <rect key="frame" x="199" y="0.0" width="183" height="183"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="183" id="2e9-ge-C6w"/>
+                                                    <constraint firstItem="GDe-l0-aPw" firstAttribute="width" secondItem="m3z-jn-Rbi" secondAttribute="width" id="pPI-Nz-A0A"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="qyg-nA-A8c">
+                                                <rect key="frame" x="0.0" y="199" width="382" height="183"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8ZDF%t1cQ16%2wz3eQBwwg_thumb_10d4" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-kM-HR5" userLabel="Person4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="183"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8ZDF%t1cQ16%2wz3eQBwwg_thumb_10d4" translatesAutoresizingMaskIntoConstraints="NO" id="FX4-aM-58n" userLabel="Person5">
+                                                        <rect key="frame" x="199" y="0.0" width="183" height="183"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="cbN-kM-HR5" firstAttribute="width" secondItem="FX4-aM-58n" secondAttribute="width" id="OFx-e7-Lox"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="MYf-BA-go6" firstAttribute="height" secondItem="qyg-nA-A8c" secondAttribute="height" id="WA6-Zg-uMy"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ibe-Ph-XFz" firstAttribute="leading" secondItem="slB-SO-4yp" secondAttribute="leading" id="0Lo-Wp-uft"/>
+                            <constraint firstItem="HAu-xy-V8j" firstAttribute="top" secondItem="slB-SO-4yp" secondAttribute="top" constant="16" id="E6z-ka-urp"/>
+                            <constraint firstItem="slB-SO-4yp" firstAttribute="trailing" secondItem="HAu-xy-V8j" secondAttribute="trailing" constant="16" id="FXj-zh-otM"/>
+                            <constraint firstItem="HAu-xy-V8j" firstAttribute="leading" secondItem="slB-SO-4yp" secondAttribute="leading" constant="16" id="naO-bA-deu"/>
+                            <constraint firstAttribute="bottom" secondItem="ibe-Ph-XFz" secondAttribute="bottom" id="rxu-8t-131"/>
+                            <constraint firstItem="ibe-Ph-XFz" firstAttribute="top" secondItem="slB-SO-4yp" secondAttribute="top" id="tYh-y2-Nb8"/>
+                            <constraint firstItem="slB-SO-4yp" firstAttribute="trailing" secondItem="ibe-Ph-XFz" secondAttribute="trailing" id="uj7-LP-Yzg"/>
+                            <constraint firstItem="slB-SO-4yp" firstAttribute="bottom" secondItem="HAu-xy-V8j" secondAttribute="bottom" constant="96" id="wQf-ts-1kn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="slB-SO-4yp"/>
                     </view>
                     <navigationItem key="navigationItem" title="My People" id="JGn-Wl-myA">
                         <barButtonItem key="backBarButtonItem" title="Home" id="Ny7-Vw-CCE"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="person1ImageView" destination="BTn-Iw-bxf" id="3aT-r9-cKb"/>
+                        <outlet property="person2ImageView" destination="GDe-l0-aPw" id="cNV-8J-VCx"/>
+                        <outlet property="person3ImageView" destination="m3z-jn-Rbi" id="ghj-Sm-TdI"/>
+                        <outlet property="person4ImageView" destination="cbN-kM-HR5" id="uSo-Xk-Lob"/>
+                        <outlet property="person5ImageView" destination="FX4-aM-58n" id="hJ9-Co-FcJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aV3-0s-47P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -650,6 +718,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="8ZDF%t1cQ16%2wz3eQBwwg_thumb_10d4" width="1024" height="1024"/>
         <image name="icons8-menu-75" width="180" height="180"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -20,6 +20,7 @@ class StartViewController: UIViewController {
             //call api for token verification
             //validateFace()
             self.performSegue(withIdentifier: "startToHome", sender: self)
+            
         }
 
         // Do any additional setup after loading the view.
