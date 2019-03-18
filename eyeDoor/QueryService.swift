@@ -110,5 +110,49 @@ class QueryService {
         task.resume()
     }
     
+    static func createPerson(firstname: String, lastname: String, image: String, completion: @escaping (_ auth: Bool) -> Void){
+        //var didCreate = false
+        let defaults = UserDefaults.standard
+        let token = defaults.string(forKey: "token")
+        print(token)
+        
+        let url = URL(string: "https://joseph-frank.com/api/friends")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(token, forHTTPHeaderField: "x-access-token")
+        let jsonData = "firstname=\(firstname)&lastname=\(lastname)&image=\(image)".data(using: String.Encoding.ascii, allowLossyConversion: false)
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let response = response as? HTTPURLResponse,
+                error == nil else {
+                    print("error", error ?? "unknown error")
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                DispatchQueue.main.async{
+                    completion(false)
+                }
+                return
+            }
+            
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            DispatchQueue.main.async{
+                completion(true)
+            }
+            // didCreate = true
+        }
+        task.resume()
+        
+        //print(didCreate)
+        return
+    }
+    
 }
 

@@ -188,13 +188,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibe-Ph-XFz" customClass="DesignableView" customModule="eyeDoor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dua-lA-bZy">
-                                        <rect key="frame" x="184" y="719" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="gradientColor1">
@@ -294,7 +287,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="My People" id="JGn-Wl-myA">
                         <barButtonItem key="backBarButtonItem" title="Home" id="Ny7-Vw-CCE"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="0nC-VX-Jjw"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0nC-VX-Jjw">
+                            <connections>
+                                <segue destination="ljM-8n-PfE" kind="showDetail" id="3Yi-2j-9D0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
@@ -309,6 +306,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aV3-0s-47P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2778.2608695652175" y="15.401785714285714"/>
+        </scene>
+        <!--New Person View Controller-->
+        <scene sceneID="GX3-Kx-Unv">
+            <objects>
+                <viewController id="ljM-8n-PfE" customClass="NewPersonViewController" customModule="eyeDoor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4zI-e7-Cmf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTf-ZX-PBO">
+                                <rect key="frame" x="87" y="120" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Gr-xs-WEC">
+                                <rect key="frame" x="163" y="270" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Photo"/>
+                                <connections>
+                                    <action selector="showImagePicker:" destination="ljM-8n-PfE" eventType="touchUpInside" id="VYx-Pr-M72"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="First Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pBl-4h-ZH2">
+                                <rect key="frame" x="20" y="380" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eil-bY-MF4">
+                                <rect key="frame" x="183" y="495" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitAction:" destination="ljM-8n-PfE" eventType="touchUpInside" id="a8g-66-O8x"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Last Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JL5-O4-shj">
+                                <rect key="frame" x="87" y="433" width="252" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="47V-cj-fw4"/>
+                    </view>
+                    <connections>
+                        <outlet property="firstNameTextField" destination="pBl-4h-ZH2" id="EQF-bb-2s0"/>
+                        <outlet property="lastNameTextField" destination="JL5-O4-shj" id="VgB-5H-z4h"/>
+                        <outlet property="personImageView" destination="RTf-ZX-PBO" id="TKL-WY-Ym5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ePl-wB-0Vf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3889.8550724637685" y="-372.32142857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pRn-qh-meG">
@@ -334,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGp-Co-yoh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3686" y="15"/>
+            <point key="canvasLocation" x="3904" y="335"/>
         </scene>
         <!--Home-->
         <scene sceneID="zYB-lk-Wnu">
