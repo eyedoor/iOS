@@ -22,6 +22,8 @@
 		FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */; };
 		FFFCFFB42234AB7F004E94A5 /* MyPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB32234AB7F004E94A5 /* MyPeopleViewController.swift */; };
 		FFFCFFB62234AD67004E94A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB52234AD67004E94A5 /* UIImageView.swift */; };
+		FFFCFFB8223FDC0E004E94A5 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */; };
+		FFFCFFBA223FDCAC004E94A5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB9223FDCAC004E94A5 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FFFCFFB32234AB7F004E94A5 /* MyPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPeopleViewController.swift; sourceTree = "<group>"; };
 		FFFCFFB52234AD67004E94A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		FFFCFFB9223FDCAC004E94A5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				FF5CE0A6221C907900DFA386 /* QueryService.swift */,
 				FFFCFFB32234AB7F004E94A5 /* MyPeopleViewController.swift */,
 				FFFCFFB52234AD67004E94A5 /* UIImageView.swift */,
+				FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */,
+				FFFCFFB9223FDCAC004E94A5 /* Person.swift */,
 			);
 			path = eyeDoor;
 			sourceTree = "<group>";
@@ -248,7 +254,9 @@
 				FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */,
 				FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */,
 				FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */,
+				FFFCFFBA223FDCAC004E94A5 /* Person.swift in Sources */,
 				FF5CE0A1221C565000DFA386 /* StartViewController.swift in Sources */,
+				FFFCFFB8223FDC0E004E94A5 /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
