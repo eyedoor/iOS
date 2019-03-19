@@ -46,6 +46,10 @@ class MyPeopleViewController: UIViewController, UIGestureRecognizerDelegate {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        
+    }
+    
 //    func imageTapped(sender: AnyObject) {
 //        // if the tapped view is a UIImageView then set it to imageview
 //        

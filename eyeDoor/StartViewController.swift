@@ -56,6 +56,9 @@ class StartViewController: UIViewController {
         }
     }
 
+    @IBAction func restartWithSegue(_ segue: UIStoryboardSegue) {
+        
+    }
     /*
     // MARK: - Navigation
 

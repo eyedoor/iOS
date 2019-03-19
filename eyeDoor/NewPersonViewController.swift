@@ -14,11 +14,16 @@ class NewPersonViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        saveButton.isEnabled = false
+        [firstNameTextField, lastNameTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
 
+        personImageView.roundedImage()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         // Do any additional setup after loading the view.
     }
@@ -27,7 +32,8 @@ class NewPersonViewController: UIViewController {
          self.imagePicker.present(from: sender)
     }
     
-    @IBAction func submitAction(_ sender: Any) {
+    @IBAction func saveButtonAction(_ sender: Any) {
+        
         
         let image = personImageView.image!
         let reducedImage = image.resized(withPercentage: 0.3)
@@ -51,20 +57,46 @@ class NewPersonViewController: UIViewController {
 //            }
 
         })
+        self.performSegue(withIdentifier: "cancel", sender: self)
         
         //print(strBase64)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+            
+        case "cancel":
+            print("cancel bar button item tapped")
+            
+        default:
+            print("unexpected segue identifier")
+        }
     }
-    */
+    
+    @objc func editingChanged(_ textField: UITextField) {
+        if textField.text!.count == 1 {
+            if textField.text!.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let firstName = firstNameTextField.text, !firstName.isEmpty,
+            let lastName = lastNameTextField.text, !lastName.isEmpty,
+            let image = personImageView.image, image != nil
+            else {
+                saveButton.isEnabled = false
+                return
+        }
+        saveButton.isEnabled = true
+        
+    }
 
 }
+
+
 
 extension NewPersonViewController: ImagePickerDelegate {
     
