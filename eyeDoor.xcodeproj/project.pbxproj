@@ -83,6 +83,52 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF0A376A2241363F001C7B1E /* MyPeople */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCFFBB223FE079004E94A5 /* NewPersonViewController.swift */,
+				FFFCFFB32234AB7F004E94A5 /* MyPeopleViewController.swift */,
+				FFFCFFB9223FDCAC004E94A5 /* Person.swift */,
+			);
+			path = MyPeople;
+			sourceTree = "<group>";
+		};
+		FF0A376B22413677001C7B1E /* SignUpLogin */ = {
+			isa = PBXGroup;
+			children = (
+				FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */,
+				FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */,
+			);
+			path = SignUpLogin;
+			sourceTree = "<group>";
+		};
+		FF0A376C224136A7001C7B1E /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA2B2A22025E200020AA7D /* Gradient.swift */,
+				FFFCFFB52234AD67004E94A5 /* UIImageView.swift */,
+				FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		FF0A376D224136CC001C7B1E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FF5CE0A6221C907900DFA386 /* QueryService.swift */,
+				FFFCFFBD223FE0D5004E94A5 /* ImagePicker.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FF0A376E224136E7001C7B1E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		FF7412422202546000826CF7 = {
 			isa = PBXGroup;
 			children = (
@@ -104,25 +150,19 @@
 		FF74124D2202546000826CF7 /* eyeDoor */ = {
 			isa = PBXGroup;
 			children = (
+				FF0A376E224136E7001C7B1E /* Account */,
+				FF0A376D224136CC001C7B1E /* Services */,
+				FF0A376C224136A7001C7B1E /* UIElements */,
+				FF0A376B22413677001C7B1E /* SignUpLogin */,
+				FF0A376A2241363F001C7B1E /* MyPeople */,
 				FF74124E2202546000826CF7 /* AppDelegate.swift */,
 				FF7412522202546000826CF7 /* Main.storyboard */,
 				FF7412552202546200826CF7 /* Assets.xcassets */,
 				FF7412572202546200826CF7 /* LaunchScreen.storyboard */,
 				FF74125A2202546200826CF7 /* Info.plist */,
 				FFAA2B282202592F0020AA7D /* MenuViewController.swift */,
-				FFAA2B2A22025E200020AA7D /* Gradient.swift */,
 				FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */,
-				FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */,
 				FF5CE0A0221C565000DFA386 /* StartViewController.swift */,
-				FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */,
-				FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */,
-				FF5CE0A6221C907900DFA386 /* QueryService.swift */,
-				FFFCFFB32234AB7F004E94A5 /* MyPeopleViewController.swift */,
-				FFFCFFB52234AD67004E94A5 /* UIImageView.swift */,
-				FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */,
-				FFFCFFB9223FDCAC004E94A5 /* Person.swift */,
-				FFFCFFBB223FE079004E94A5 /* NewPersonViewController.swift */,
-				FFFCFFBD223FE0D5004E94A5 /* ImagePicker.swift */,
 			);
 			path = eyeDoor;
 			sourceTree = "<group>";
