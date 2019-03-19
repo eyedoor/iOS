@@ -42,22 +42,19 @@ class NewPersonViewController: UIViewController {
         print(imageData)
         let strBase64 = imageData?.base64EncodedString()
         print(strBase64)
-        QueryService.createPerson(firstname: firstNameTextField.text!, lastname: lastNameTextField.text!, image: strBase64!, completion: {(auth: Bool) -> Void in
-            print("auth is \(auth)")
-//            if(auth == true){
-//                let defaults = UserDefaults.standard
-//                defaults.set(true, forKey: "LoggedIn")
-//                self.performSegue(withIdentifier: "loginToHome", sender: self)
-//            } else {
-//                let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//
-//                alertController.addAction(defaultAction)
-//                self.present(alertController, animated: true, completion: nil)
-//            }
+        QueryService.createPerson(firstname: firstNameTextField.text!, lastname: lastNameTextField.text!, image: strBase64!, completion: {(success: Bool) -> Void in
+            print("success is \(success)")
+            if(success == true){
+                self.performSegue(withIdentifier: "cancel", sender: self)
+            } else {
+                let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
 
         })
-        self.performSegue(withIdentifier: "cancel", sender: self)
         
         //print(strBase64)
     }

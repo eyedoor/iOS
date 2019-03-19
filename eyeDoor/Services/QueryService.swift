@@ -110,7 +110,7 @@ class QueryService {
         task.resume()
     }
     
-    static func createPerson(firstname: String, lastname: String, image: String, completion: @escaping (_ auth: Bool) -> Void){
+    static func createPerson(firstname: String, lastname: String, image: String, completion: @escaping (_ success: Bool) -> Void){
         //var didCreate = false
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
