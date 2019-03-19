@@ -25,9 +25,30 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
         UIImage(named: "Girl2.png")!,
         UIImage(named: "Girl1.png")!,
         UIImage(named: "Boy1.png")!,
+        UIImage(named: "Girl1.png")!,
+        UIImage(named: "Boy1.png")!,
+        UIImage(named: "Girl2.png")!,
+        UIImage(named: "Girl1.png")!,
+        UIImage(named: "Boy1.png")!,
+        UIImage(named: "Girl1.png")!,
+        UIImage(named: "Boy1.png")!,
+        UIImage(named: "Girl2.png")!,
+        UIImage(named: "Girl1.png")!,
+        UIImage(named: "Boy1.png")!,
     ]
     
-    var names: [String] = ["Jessica", "Cole", "Hannah", "Kim Kardashian", "Coole"]
+    var friends = [Person]()
+    
+    override func viewDidLoad() {
+        QueryService.getFriendNames { (friends) in
+            print("friends list is \(friends)")
+            //self.friends = friends as! [Person]
+            DispatchQueue.main.async {
+                self.friends = friends as! [Person]
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
 }
 
@@ -51,7 +72,10 @@ extension MyPeopleCollectionViewController {
                                                       for: indexPath) as! MyPeopleCollectionViewCell
         //2
         let personPhoto = images[indexPath.row]
-        let name = names[indexPath.row]
+        var name = ""
+        if (friends.count != 0 && friends.count > indexPath.row){
+            name = friends[indexPath.row].firstName
+        }
         
         //3
         //cell.imageView.image = personPhoto.thumbnail

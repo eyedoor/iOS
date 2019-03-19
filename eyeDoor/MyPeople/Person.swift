@@ -11,5 +11,13 @@ import UIKit
 struct Person {
     var firstName: String
     var lastName: String
-    var image: UIImage
+    var personID: Int
+    var image: UIImage?
+    
+    init(_ dictionary: [String: Any]) {
+        self.firstName = dictionary["FriendFirst"] as! String
+        self.lastName = dictionary["FriendLast"] as! String
+        self.personID = dictionary["FriendID"] as! Int
+        //self.image = dictionary["completed"] as? Bool ?? false
+    }
 }
