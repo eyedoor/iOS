@@ -155,17 +155,13 @@ class QueryService {
     }
     
     static func getFriendNames(completion: @escaping (_ friends: Array<Any>) -> Void){
-        //var didCreate = false
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
-        print(token)
         
         let url = URL(string: "https://joseph-frank.com/api/friends")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(token, forHTTPHeaderField: "x-access-token")
-//        let jsonData = "firstname=\(firstname)&lastname=\(lastname)&image=\(image)".data(using: String.Encoding.ascii, allowLossyConversion: false)
-//        request.httpBody = jsonData
         
         var friends = [Person]()
         
@@ -179,15 +175,8 @@ class QueryService {
             guard (200 ... 299) ~= response.statusCode else {
                 print("statusCode should be 2xx, but is \(response.statusCode)")
                 print("response = \(response)")
-//                DispatchQueue.main.async{
-//                    completion()
-//                }
                 return
             }
-            
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
             
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with:
@@ -203,16 +192,11 @@ class QueryService {
             } catch let parsingError {
                 print("Error", parsingError)
             }
-            
-            
             DispatchQueue.main.async{
                 completion(friends)
             }
-            // didCreate = true
         }
         task.resume()
-        
-        //print(didCreate)
         return
     }
     

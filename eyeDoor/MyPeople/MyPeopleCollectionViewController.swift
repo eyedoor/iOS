@@ -38,8 +38,7 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
     ]
     
     var friends = [Person]()
-    
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         QueryService.getFriendNames { (friends) in
             print("friends list is \(friends)")
             //self.friends = friends as! [Person]
