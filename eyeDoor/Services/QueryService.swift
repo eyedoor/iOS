@@ -119,9 +119,10 @@ class QueryService {
         let url = URL(string: "https://joseph-frank.com/api/friends")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(token, forHTTPHeaderField: "x-access-token")
-        let jsonData = "firstname=\(firstname)&lastname=\(lastname)&image=\(image)".data(using: String.Encoding.utf8, allowLossyConversion: false)
+        let json: [String: Any] = ["firstname":firstname, "lastname":lastname, "image":image]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
         request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in

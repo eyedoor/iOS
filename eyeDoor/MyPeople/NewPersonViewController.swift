@@ -40,9 +40,9 @@ class NewPersonViewController: UIViewController {
         
         
         let imageData = reducedImage!.pngData()
-        print(imageData)
+        //print(imageData)
         let strBase64 = imageData?.base64EncodedString()
-        print(strBase64)
+        //print(strBase64)
         QueryService.createPerson(firstname: firstNameTextField.text!, lastname: lastNameTextField.text!, image: strBase64!, completion: {(success: Bool) -> Void in
             print("success is \(success)")
             if(success == true){
