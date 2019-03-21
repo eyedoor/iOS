@@ -100,6 +100,7 @@ extension NewPersonViewController: ImagePickerDelegate {
     
     func didSelect(image: UIImage?) {
         self.personImageView.image = image
+        personImageView.contentMode = UIView.ContentMode.scaleAspectFill
     }
 }
 

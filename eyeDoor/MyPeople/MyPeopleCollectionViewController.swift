@@ -48,12 +48,12 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
                 self.collectionView.reloadData()
                 for (index, friend) in self.friends.enumerated(){
                     QueryService.getFriendImage(friendID: friend.personID) { (base64Image) in
-                        print("attempting to get image")
+                        //print("attempting to get image")
                         let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
                         let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                         self.friends[index].image = decodedimage
-                        print(self.friends[index].image)
-                        print("trying to reload")
+                        //print(self.friends[index].image)
+                        //print("trying to reload")
                         self.collectionView.reloadData()
                     }
                 }
@@ -101,6 +101,7 @@ extension MyPeopleCollectionViewController {
         //3
         //cell.imageView.image = personPhoto.thumbnail
        // cell.personImageView.image = personPhoto
+        cell.personImageView.backgroundColor = UIColor.black
         cell.nameLabel.text = name
         cell.personImageView.roundedImage()
         return cell
