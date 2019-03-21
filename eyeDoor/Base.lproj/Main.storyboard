@@ -254,9 +254,9 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yu3-gN-9Bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3602.898550724638" y="-648.21428571428567"/>
+            <point key="canvasLocation" x="2893" y="21"/>
         </scene>
-        <!--New Person View Controller-->
+        <!--Add New Person-->
         <scene sceneID="GX3-Kx-Unv">
             <objects>
                 <viewController id="ljM-8n-PfE" customClass="NewPersonViewController" customModule="eyeDoor" customModuleProvider="target" sceneMemberID="viewController">
@@ -279,7 +279,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ff7-8k-fbf">
                                 <rect key="frame" x="16" y="16" width="382" height="358"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RTf-ZX-PBO">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Person" translatesAutoresizingMaskIntoConstraints="NO" id="RTf-ZX-PBO">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="191"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8fv-Ra-4Gm">
@@ -344,7 +344,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="47V-cj-fw4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="B74-C1-VH0">
+                    <navigationItem key="navigationItem" title="Add New Person" id="B74-C1-VH0">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0dd-9y-FK1">
                             <connections>
                                 <segue destination="KX8-7S-7cz" kind="unwind" identifier="cancel" unwindAction="unwindWithSegue:" id="rzh-bw-CG1"/>
@@ -366,7 +366,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePl-wB-0Vf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="KX8-7S-7cz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5708.6956521739139" y="-372.32142857142856"/>
+            <point key="canvasLocation" x="4999" y="297"/>
         </scene>
         <!--Home-->
         <scene sceneID="zYB-lk-Wnu">
@@ -827,10 +827,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptF-EE-Wpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4800" y="-372.32142857142856"/>
+            <point key="canvasLocation" x="4088" y="297"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Person" width="375" height="375"/>
         <image name="icons8-menu-75" width="180" height="180"/>
     </resources>
     <inferredMetricsTieBreakers>

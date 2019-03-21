@@ -38,15 +38,35 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
     ]
     
     var friends = [Person]()
+    
     override func viewDidAppear(_ animated: Bool) {
         QueryService.getFriendNames { (friends) in
-            print("friends list is \(friends)")
+            //print("friends list is \(friends)")
             //self.friends = friends as! [Person]
             DispatchQueue.main.async {
                 self.friends = friends as! [Person]
                 self.collectionView.reloadData()
+                for (index, friend) in self.friends.enumerated(){
+                    QueryService.getFriendImage(friendID: 23) { (base64Image) in
+                        //print("attempting to get image")
+                        let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                        self.friends[index].image = decodedimage
+                        //print(succ)
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }
         }
+    }
+    
+    override func viewDidLoad() {
+//        QueryService.getFriendImage(friendID: 13) { (succ) in
+//            print("attempting to get image")
+//            print(succ)
+//        }
     }
     
 }
@@ -61,7 +81,7 @@ extension MyPeopleCollectionViewController {
     //2
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return friends.count
     }
     
     //3
@@ -70,7 +90,10 @@ extension MyPeopleCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! MyPeopleCollectionViewCell
         //2
-        let personPhoto = images[indexPath.row]
+        if let personPhoto = friends[indexPath.row].image {
+            cell.personImageView.image = personPhoto
+        }
+        
         var name = ""
         if (friends.count != 0 && friends.count > indexPath.row){
             name = friends[indexPath.row].firstName
@@ -78,7 +101,7 @@ extension MyPeopleCollectionViewController {
         
         //3
         //cell.imageView.image = personPhoto.thumbnail
-        cell.personImageView.image = personPhoto
+       // cell.personImageView.image = personPhoto
         cell.nameLabel.text = name
         cell.personImageView.roundedImage()
         return cell
