@@ -36,7 +36,7 @@ class NewPersonViewController: UIViewController {
         
         
         let image = personImageView.image!
-        let reducedImage = image.resized(withPercentage: 0.1)
+        let reducedImage = image.resized(withPercentage: 0.3)
         
         
         let imageData = reducedImage!.pngData()

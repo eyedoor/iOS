@@ -47,16 +47,15 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
                 self.friends = friends as! [Person]
                 self.collectionView.reloadData()
                 for (index, friend) in self.friends.enumerated(){
-                    QueryService.getFriendImage(friendID: 23) { (base64Image) in
-                        //print("attempting to get image")
+                    QueryService.getFriendImage(friendID: friend.personID) { (base64Image) in
+                        print("attempting to get image")
                         let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
                         let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                         self.friends[index].image = decodedimage
-                        //print(succ)
+                        print(self.friends[index].image)
+                        print("trying to reload")
+                        self.collectionView.reloadData()
                     }
-                }
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
                 }
             }
         }
