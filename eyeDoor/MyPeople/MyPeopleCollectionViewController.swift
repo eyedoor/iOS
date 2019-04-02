@@ -88,6 +88,20 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowPersonDetail" {
+            
+            let detailsVC = segue.destination as! DetailViewController
+            let cell = sender as! MyPeopleCollectionViewCell
+            let indexPaths = self.collectionView.indexPath(for: cell)
+            var person = self.friends[indexPaths!.row] as Person
+            detailsVC.firstName = person.firstName
+            detailsVC.lastName = person.lastName
+//            detailsVC.pinArray = self.pinArray
+//            detailsVC.userStamp = self.userStamps[indexPaths!.row]
+        }
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -128,6 +142,8 @@ extension MyPeopleCollectionViewController {
         cell.personImageView.roundedImage()
         return cell
     }
+    
+    
     
 }
 

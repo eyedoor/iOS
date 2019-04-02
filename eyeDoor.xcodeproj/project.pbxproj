@@ -11,6 +11,7 @@
 		FF0A377022413826001C7B1E /* MyPeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A376F22413826001C7B1E /* MyPeopleCollectionViewCell.swift */; };
 		FF0A3772224138F3001C7B1E /* MyPeopleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A3771224138F3001C7B1E /* MyPeopleCollectionViewController.swift */; };
 		FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B06A62252EFF600EAD4ED /* Event.swift */; };
+		FF4BFB6C225300D900DEC25E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BFB6B225300D900DEC25E /* DetailViewController.swift */; };
 		FF5CE0A1221C565000DFA386 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A0221C565000DFA386 /* StartViewController.swift */; };
 		FF5CE0A3221C5A4400DFA386 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */; };
 		FF5CE0A5221C5D4100DFA386 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */; };
@@ -38,6 +39,7 @@
 		FF0A376F22413826001C7B1E /* MyPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF0A3771224138F3001C7B1E /* MyPeopleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPeopleCollectionViewController.swift; sourceTree = "<group>"; };
 		FF2B06A62252EFF600EAD4ED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FF4BFB6B225300D900DEC25E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FF5CE0A0221C565000DFA386 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */,
 				FF5CE0A0221C565000DFA386 /* StartViewController.swift */,
 				FF2B06A62252EFF600EAD4ED /* Event.swift */,
+				FF4BFB6B225300D900DEC25E /* DetailViewController.swift */,
 			);
 			path = eyeDoor;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */,
 				FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */,
 				FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */,
+				FF4BFB6C225300D900DEC25E /* DetailViewController.swift in Sources */,
 				FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */,
 				FF0A377022413826001C7B1E /* MyPeopleCollectionViewCell.swift in Sources */,
 				FFFCFFBC223FE079004E94A5 /* NewPersonViewController.swift in Sources */,

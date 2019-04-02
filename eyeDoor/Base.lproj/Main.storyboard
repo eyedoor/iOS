@@ -235,6 +235,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="1dP-kJ-5KB" id="9Lq-qZ-gu3"/>
                                     <outlet property="personImageView" destination="c6s-bZ-Orq" id="Eyf-GJ-uXB"/>
+                                    <segue destination="1yq-9r-6H5" kind="show" identifier="ShowPersonDetail" id="pSH-pr-86G"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -255,6 +256,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yu3-gN-9Bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2893" y="21"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="aZO-6h-XBK">
+            <objects>
+                <viewController id="1yq-9r-6H5" customClass="DetailViewController" customModule="eyeDoor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PGj-Ig-y74">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAy-dT-8fO">
+                                <rect key="frame" x="124" y="355" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gxH-3k-PV4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ucz-UX-i2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3932" y="-464"/>
         </scene>
         <!--Add New Person-->
         <scene sceneID="GX3-Kx-Unv">
@@ -301,9 +326,10 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pBl-4h-ZH2">
                                                 <rect key="frame" x="0.0" y="66.666666666666686" width="382" height="33.666666666666657"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWu-a2-vnC" userLabel="Last Name">
                                                 <rect key="frame" x="0.0" y="100.33333333333331" width="382" height="33.333333333333343"/>
@@ -313,9 +339,10 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JL5-O4-shj">
                                                 <rect key="frame" x="0.0" y="133.66666666666669" width="382" height="33.333333333333343"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
