@@ -10,6 +10,7 @@
 		AE090B3F1CD56929F293CAAF /* Pods_eyeDoor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47159F2A7BB464270291E891 /* Pods_eyeDoor.framework */; };
 		FF0A377022413826001C7B1E /* MyPeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A376F22413826001C7B1E /* MyPeopleCollectionViewCell.swift */; };
 		FF0A3772224138F3001C7B1E /* MyPeopleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A3771224138F3001C7B1E /* MyPeopleCollectionViewController.swift */; };
+		FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B06A62252EFF600EAD4ED /* Event.swift */; };
 		FF5CE0A1221C565000DFA386 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A0221C565000DFA386 /* StartViewController.swift */; };
 		FF5CE0A3221C5A4400DFA386 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */; };
 		FF5CE0A5221C5D4100DFA386 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */; };
@@ -36,6 +37,7 @@
 		F5FF22A72F7FA2BBD835B7D3 /* Pods-eyeDoor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eyeDoor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eyeDoor/Pods-eyeDoor.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0A376F22413826001C7B1E /* MyPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF0A3771224138F3001C7B1E /* MyPeopleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPeopleCollectionViewController.swift; sourceTree = "<group>"; };
+		FF2B06A62252EFF600EAD4ED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FF5CE0A0221C565000DFA386 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		FF5CE0A2221C5A4400DFA386 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FF5CE0A4221C5D4100DFA386 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				FFAA2B282202592F0020AA7D /* MenuViewController.swift */,
 				FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */,
 				FF5CE0A0221C565000DFA386 /* StartViewController.swift */,
+				FF2B06A62252EFF600EAD4ED /* Event.swift */,
 			);
 			path = eyeDoor;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */,
 				FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */,
 				FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */,
+				FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */,
 				FF0A377022413826001C7B1E /* MyPeopleCollectionViewCell.swift in Sources */,
 				FFFCFFBC223FE079004E94A5 /* NewPersonViewController.swift in Sources */,
 				FF0A3772224138F3001C7B1E /* MyPeopleCollectionViewController.swift in Sources */,

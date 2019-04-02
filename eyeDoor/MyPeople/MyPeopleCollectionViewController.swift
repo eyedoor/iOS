@@ -62,10 +62,30 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
     }
     
     override func viewDidLoad() {
-//        QueryService.getFriendImage(friendID: 13) { (succ) in
-//            print("attempting to get image")
-//            print(succ)
+//        QueryService.getFriendNames { (friends) in
+//            //print("friends list is \(friends)")
+//            //self.friends = friends as! [Person]
+//            DispatchQueue.main.async {
+//                self.friends = friends as! [Person]
+//                //self.collectionView.reloadData()
+//                for (index, friend) in self.friends.enumerated(){
+//                    QueryService.getFriendImage(friendID: friend.personID) { (base64Image) in
+//                        //print("attempting to get image")
+//                        let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
+//                        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+//                        self.friends[index].image = decodedimage
+//                        //print(self.friends[index].image)
+//                        //print("trying to reload")
+//                        self.collectionView.reloadData()
+//                    }
+//                }
+//            }
 //        }
+        
+    }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        
     }
     
 }
@@ -88,6 +108,8 @@ extension MyPeopleCollectionViewController {
         //1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! MyPeopleCollectionViewCell
+        
+        //let cell = MyPeopleCollectionViewCell()
         //2
         if let personPhoto = friends[indexPath.row].image {
             cell.personImageView.image = personPhoto
@@ -107,9 +129,6 @@ extension MyPeopleCollectionViewController {
         return cell
     }
     
-    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
-        
-    }
 }
 
 // MARK: - Collection View Flow Layout Delegate

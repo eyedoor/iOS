@@ -241,5 +241,52 @@ class QueryService {
         return
     }
     
+    static func getEvents(completion: @escaping (_ friends: Array<Any>) -> Void){
+        let defaults = UserDefaults.standard
+        let token = defaults.string(forKey: "token")
+        
+        let url = URL(string: "https://joseph-frank.com/api/friends")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue(token, forHTTPHeaderField: "x-access-token")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        var events = [Event]()
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let response = response as? HTTPURLResponse,
+                error == nil else {
+                    print("error", error ?? "unknown error")
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                return
+            }
+            
+            do {
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    data, options: [])
+                print("jsonResponse is \(jsonResponse)")
+                guard let jsonArray = jsonResponse as? [[String: Any]] else {
+                    return
+                }
+                
+                for dic in jsonArray {
+                    events.append(Event(dic))
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            DispatchQueue.main.async{
+                completion(events)
+            }
+        }
+        task.resume()
+        return
+    }
+    
 }
 
