@@ -241,11 +241,11 @@ class QueryService {
         return
     }
     
-    static func getEvents(completion: @escaping (_ friends: Array<Any>) -> Void){
+    static func getEvents(completion: @escaping (_ events: Array<Any>) -> Void){
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
         
-        let url = URL(string: "https://joseph-frank.com/api/friends")!
+        let url = URL(string: "https://joseph-frank.com/api/events")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(token, forHTTPHeaderField: "x-access-token")
