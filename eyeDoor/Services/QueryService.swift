@@ -182,7 +182,7 @@ class QueryService {
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     data, options: [])
-                print("jsonResponse is \(jsonResponse)")
+                //print("jsonResponse is \(jsonResponse)")
                 guard let jsonArray = jsonResponse as? [[String: Any]] else {
                     return
                 }

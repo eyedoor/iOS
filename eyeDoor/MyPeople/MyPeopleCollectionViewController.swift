@@ -17,35 +17,38 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
                                              right: 20.0)
     private let itemsPerRow: CGFloat = 2
     
-    
-    
-    var images: [UIImage] = [
-        UIImage(named: "Girl1.png")!,
-        UIImage(named: "Boy1.png")!,
-        UIImage(named: "Girl2.png")!,
-        UIImage(named: "Girl1.png")!,
-        UIImage(named: "Boy1.png")!,
-        UIImage(named: "Girl1.png")!,
-        UIImage(named: "Boy1.png")!,
-        UIImage(named: "Girl2.png")!,
-        UIImage(named: "Girl1.png")!,
-        UIImage(named: "Boy1.png")!,
-        UIImage(named: "Girl1.png")!,
-        UIImage(named: "Boy1.png")!,
-        UIImage(named: "Girl2.png")!,
-        UIImage(named: "Girl1.png")!,
-        UIImage(named: "Boy1.png")!,
-    ]
-    
     var friends = [Person]()
     
     override func viewDidAppear(_ animated: Bool) {
+//        QueryService.getFriendNames { (friends) in
+//            //print("friends list is \(friends)")
+//            //self.friends = friends as! [Person]
+//            DispatchQueue.main.async {
+//                self.friends = friends as! [Person]
+//                //self.collectionView.reloadData()
+//                for (index, friend) in self.friends.enumerated(){
+//                    QueryService.getFriendImage(friendID: friend.personID) { (base64Image) in
+//                        //print("attempting to get image")
+//                        let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
+//                        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+//                        self.friends[index].image = decodedimage
+//                        //print(self.friends[index].image)
+//                        //print("trying to reload")
+//                        self.collectionView.reloadData()
+//
+//                    }
+//                }
+//            }
+//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         QueryService.getFriendNames { (friends) in
             //print("friends list is \(friends)")
             //self.friends = friends as! [Person]
             DispatchQueue.main.async {
                 self.friends = friends as! [Person]
-                self.collectionView.reloadData()
+                //self.collectionView.reloadData()
                 for (index, friend) in self.friends.enumerated(){
                     QueryService.getFriendImage(friendID: friend.personID) { (base64Image) in
                         //print("attempting to get image")
@@ -55,10 +58,12 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
                         //print(self.friends[index].image)
                         //print("trying to reload")
                         self.collectionView.reloadData()
+                        
                     }
                 }
             }
         }
+
     }
     
     override func viewDidLoad() {
@@ -94,9 +99,19 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
             let detailsVC = segue.destination as! DetailViewController
             let cell = sender as! MyPeopleCollectionViewCell
             let indexPaths = self.collectionView.indexPath(for: cell)
-            var person = self.friends[indexPaths!.row] as Person
+            let person = self.friends[indexPaths!.row] as Person
             detailsVC.firstName = person.firstName
             detailsVC.lastName = person.lastName
+            if let image = person.image{
+                print("not nil")
+                detailsVC.friendImageView?.image = image
+                print(image)
+            }
+            print(person.image)
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
 //            detailsVC.pinArray = self.pinArray
 //            detailsVC.userStamp = self.userStamps[indexPaths!.row]
         }
@@ -125,6 +140,7 @@ extension MyPeopleCollectionViewController {
         
         //let cell = MyPeopleCollectionViewCell()
         //2
+        cell.personImageView.backgroundColor = UIColor.black
         if let personPhoto = friends[indexPath.row].image {
             cell.personImageView.image = personPhoto
         }
@@ -137,7 +153,6 @@ extension MyPeopleCollectionViewController {
         //3
         //cell.imageView.image = personPhoto.thumbnail
        // cell.personImageView.image = personPhoto
-        cell.personImageView.backgroundColor = UIColor.black
         cell.nameLabel.text = name
         cell.personImageView.roundedImage()
         return cell

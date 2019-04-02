@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDataSource {
 
     
+    @IBOutlet weak var eventsTableView: UITableView!
     
     var events = [Event]()
 
@@ -22,7 +23,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             //self.friends = friends as! [Person]
             DispatchQueue.main.async {
                 self.events = events as! [Event]
-                //self.collectionView.reloadData()
+                self.eventsTableView.reloadData()
                 
             }
         }
@@ -37,7 +38,16 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewIdentifier") as! EventTableViewCell
         
-        cell.eventDateTimeLabel.text = events[indexPath.row].timeSent
+        var dateString = events[indexPath.row].timeSent
+        
+//        print(dateString)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "YYYY-MM-DDTHH:MI:SS Z"
+//        let date = dateFormatter.date(from: dateString)
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        
+        cell.eventDateTimeLabel.text = dateString//events[indexPath.row].timeSent
         
         return cell
     }

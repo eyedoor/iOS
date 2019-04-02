@@ -272,10 +272,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LpD-ao-eFZ">
+                                <rect key="frame" x="20" y="20" width="374" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Szh-9f-vmk"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LpD-ao-eFZ" firstAttribute="top" secondItem="gxH-3k-PV4" secondAttribute="top" constant="20" id="EFz-o5-SWO"/>
+                            <constraint firstItem="LpD-ao-eFZ" firstAttribute="leading" secondItem="gxH-3k-PV4" secondAttribute="leading" constant="20" id="F5q-Mb-hyj"/>
+                            <constraint firstItem="gxH-3k-PV4" firstAttribute="trailing" secondItem="LpD-ao-eFZ" secondAttribute="trailing" constant="20" id="y0c-1c-1Xc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gxH-3k-PV4"/>
                     </view>
+                    <connections>
+                        <outlet property="friendImageView" destination="LpD-ao-eFZ" id="d8q-Qa-HbE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucz-UX-i2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -420,14 +434,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DateTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai5-no-csj">
-                                                            <rect key="frame" x="20" y="12" width="73" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai5-no-csj">
+                                                            <rect key="frame" x="8" y="8.0000000000000018" width="398" height="27.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="Ai5-no-csj" secondAttribute="trailing" id="8Vx-mP-yMq"/>
+                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="bottom" secondItem="n8T-0G-Zbn" secondAttribute="bottomMargin" id="CO3-rq-qqK"/>
+                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="top" secondItem="n8T-0G-Zbn" secondAttribute="topMargin" id="KkL-Xx-skM"/>
+                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="leading" secondItem="n8T-0G-Zbn" secondAttribute="leadingMargin" id="M4z-2J-w6K"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="eventDateTimeLabel" destination="Ai5-no-csj" id="q1i-Jx-B0A"/>
@@ -462,6 +481,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="eventsTableView" destination="z7z-Cg-u34" id="XWp-OV-1vE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AZi-Bc-bpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

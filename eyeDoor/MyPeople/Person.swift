@@ -12,7 +12,7 @@ struct Person {
     var firstName: String
     var lastName: String
     var personID: Int
-    var image: UIImage?
+    var image: UIImage!
     
     init(_ dictionary: [String: Any]) {
         self.firstName = dictionary["FriendFirst"] as! String

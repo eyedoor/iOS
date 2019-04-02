@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var friendImageView: UIImageView!
     var firstName: String = ""
     var lastName: String = ""
 
@@ -17,6 +18,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "\(firstName) \(lastName)"
+        friendImageView.roundedImage()
+        print(friendImageView.image)
+        
 
         // Do any additional setup after loading the view.
     }
