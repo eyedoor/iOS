@@ -70,14 +70,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var dateString = events[indexPath.row].timeSent
         
-//        print(dateString)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "YYYY-MM-DDTHH:MI:SS Z"
-//        let date = dateFormatter.date(from: dateString)
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
+        print(dateString)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
+        let date = dateFormatter.date(from: dateString)
+        dateFormatter.dateFormat = "hh:mm a - MMM d, yyyy"
+        print(date)
         
         
-        cell.eventDateTimeLabel.text = dateString//events[indexPath.row].timeSent
+        cell.eventDateTimeLabel.text = dateFormatter.string(from: date!)//events[indexPath.row].timeSent
         
         return cell
     }
