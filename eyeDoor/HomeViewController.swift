@@ -8,10 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     @IBOutlet weak var eventsTableView: UITableView!
+    
+    @IBOutlet weak var eventImageView: UIImageView!
     
     var events = [Event]()
 
@@ -25,8 +27,36 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 self.events = events as! [Event]
                 self.eventsTableView.reloadData()
                 
+                QueryService.getEventImage(eventID: self.events[0].eventID) { (base64Image) in
+                    //print("friends list is \(friends)")
+                    //self.friends = friends as! [Person]
+                    DispatchQueue.main.async {
+                        //self.events = events as! [Event]
+                        //self.eventsTableView.reloadData()
+                        let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                        self.eventImageView.image = decodedimage
+                        //self.eventsTableView.reloadData()
+                    }
+                }
+                
             }
         }
+        
+//        QueryService.getEventImage(eventID: events.last!.eventID) { (base64Image) in
+//            //print("friends list is \(friends)")
+//            //self.friends = friends as! [Person]
+//            DispatchQueue.main.async {
+//                //self.events = events as! [Event]
+//                //self.eventsTableView.reloadData()
+//                let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
+//                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+//                self.eventImageView.image = decodedimage
+//                //self.eventsTableView.reloadData()
+//            }
+//        }
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -50,6 +80,29 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         cell.eventDateTimeLabel.text = dateString//events[indexPath.row].timeSent
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected")
+        var currentEventID = events[indexPath.row].eventID
+        print(currentEventID)
+        QueryService.getEventImage(eventID: currentEventID) { (base64Image) in
+            //print("friends list is \(friends)")
+            //self.friends = friends as! [Person]
+            DispatchQueue.main.async {
+                //self.events = events as! [Event]
+                //self.eventsTableView.reloadData()
+                
+                let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                if let decodedimage:UIImage = UIImage(data: dataDecoded as Data) {
+                    self.eventImageView.image = decodedimage
+                } else {
+                    self.eventImageView.image = nil
+                }
+                //self.eventImageView.image = decodedimage
+                //self.eventsTableView.reloadData()
+            }
+        }
     }
     
 

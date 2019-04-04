@@ -288,5 +288,45 @@ class QueryService {
         return
     }
     
+    static func getEventImage(eventID: Int, completion: @escaping (_ base64Image: String) -> Void){
+        //var didCreate = false
+        let defaults = UserDefaults.standard
+        let token = defaults.string(forKey: "token")
+        print("friend ID is \(eventID)")
+        
+        var url = URLComponents(string: "https://joseph-frank.com/api/images")!
+        url.queryItems = [
+            URLQueryItem(name: "eventId", value: "\(eventID)")
+        ]
+        
+        var request = URLRequest(url: url.url!)
+        request.httpMethod = "GET"
+        request.setValue("text/html; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(token, forHTTPHeaderField: "x-access-token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let response = response as? HTTPURLResponse,
+                error == nil else {
+                    print("error", error ?? "unknown error")
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                return
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            //print("responseString = \(responseString)")
+            DispatchQueue.main.async{
+                completion(responseString!)
+            }
+        }
+        task.resume()
+        
+        return
+    }
+    
 }
 

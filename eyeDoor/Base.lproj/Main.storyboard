@@ -417,10 +417,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-6v-jpk" customClass="DesignableView" customModule="eyeDoor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientColor1">
+                                        <color key="value" red="0.76078431369999999" green="0.91372549020000005" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientColor2">
+                                        <color key="value" red="0.63137254899999995" green="0.76862745099999996" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GEE-7s-gE7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TuR-ii-pXX">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TuR-ii-pXX">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z7z-Cg-u34">
@@ -448,6 +460,7 @@
                                                         <constraint firstItem="Ai5-no-csj" firstAttribute="leading" secondItem="n8T-0G-Zbn" secondAttribute="leadingMargin" id="M4z-2J-w6K"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="eventDateTimeLabel" destination="Ai5-no-csj" id="q1i-Jx-B0A"/>
                                                 </connections>
@@ -455,6 +468,7 @@
                                         </prototypes>
                                         <connections>
                                             <outlet property="dataSource" destination="o98-Bl-Mzy" id="Vhc-UM-xEg"/>
+                                            <outlet property="delegate" destination="o98-Bl-Mzy" id="Q2n-6s-tRB"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
@@ -465,9 +479,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Eeb-6v-jpk" firstAttribute="top" secondItem="JyJ-fh-Jyp" secondAttribute="top" id="Cwb-FZ-AIa"/>
+                            <constraint firstItem="Eeb-6v-jpk" firstAttribute="leading" secondItem="JyJ-fh-Jyp" secondAttribute="leading" id="YTI-K9-k59"/>
                             <constraint firstItem="JyJ-fh-Jyp" firstAttribute="trailing" secondItem="GEE-7s-gE7" secondAttribute="trailing" id="gPT-ot-qve"/>
                             <constraint firstItem="GEE-7s-gE7" firstAttribute="top" secondItem="JyJ-fh-Jyp" secondAttribute="top" id="it8-LU-8SU"/>
                             <constraint firstItem="GEE-7s-gE7" firstAttribute="leading" secondItem="JyJ-fh-Jyp" secondAttribute="leading" id="jUZ-G1-2fg"/>
+                            <constraint firstAttribute="bottom" secondItem="Eeb-6v-jpk" secondAttribute="bottom" id="r3c-6d-KBl"/>
+                            <constraint firstItem="JyJ-fh-Jyp" firstAttribute="trailing" secondItem="Eeb-6v-jpk" secondAttribute="trailing" id="w7m-XB-nbZ"/>
                             <constraint firstAttribute="bottom" secondItem="GEE-7s-gE7" secondAttribute="bottom" id="yk2-ZX-Qqm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JyJ-fh-Jyp"/>
@@ -482,6 +500,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventImageView" destination="TuR-ii-pXX" id="R4h-bR-7oy"/>
                         <outlet property="eventsTableView" destination="z7z-Cg-u34" id="XWp-OV-1vE"/>
                     </connections>
                 </viewController>
