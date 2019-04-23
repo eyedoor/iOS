@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         QueryService.getEvents{ (events) in
             //print("friends list is \(friends)")
             //self.friends = friends as! [Person]
@@ -37,11 +38,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                         self.eventImageView.image = decodedimage
                         //self.eventsTableView.reloadData()
+                        let indexPath = IndexPath.init(row: 0, section: 0)
+                        self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
                     }
                 }
                 
             }
         }
+        
         
 //        QueryService.getEventImage(eventID: events.last!.eventID) { (base64Image) in
 //            //print("friends list is \(friends)")
@@ -68,25 +72,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewIdentifier") as! EventTableViewCell
         
-        var dateString = events[indexPath.row].timeSent
-        
-        print(dateString)
+        let dateString = events[indexPath.row].timeSent
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
         let date = dateFormatter.date(from: dateString)
-        dateFormatter.dateFormat = "hh:mm a - MMM d, yyyy"
-        print(date)
+        dateFormatter.dateFormat = "hh:mm a 'on' MMM d, yyyy"
         
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
+        cell.selectedBackgroundView = backgroundView
         
         cell.eventDateTimeLabel.text = dateFormatter.string(from: date!)//events[indexPath.row].timeSent
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .clear
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
+        //print("selected")
         var currentEventID = events[indexPath.row].eventID
-        print(currentEventID)
+        //print(currentEventID)
         QueryService.getEventImage(eventID: currentEventID) { (base64Image) in
             //print("friends list is \(friends)")
             //self.friends = friends as! [Person]
