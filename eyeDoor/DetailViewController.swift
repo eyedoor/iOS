@@ -60,6 +60,38 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func deleteFriend(_ sender: Any) {
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to permanently delete your friend?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { action in
+            QueryService.deleteFriend(friendID: self.friendID, completion: {(success) in
+                //print("friends list is \(friends)")
+                //self.friends = friends as! [Person]
+                DispatchQueue.main.async {
+                    if (success){
+                        //go back
+                        self.performSegue(withIdentifier: "cancel", sender: self)
+                    } else {
+                        let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        
+                        alertController.addAction(defaultAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    
+                }
+                
+            })
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+        
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

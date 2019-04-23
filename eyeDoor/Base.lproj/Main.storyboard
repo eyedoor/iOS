@@ -257,7 +257,7 @@
             </objects>
             <point key="canvasLocation" x="2893" y="21"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Name-->
         <scene sceneID="aZO-6h-XBK">
             <objects>
                 <viewController id="1yq-9r-6H5" customClass="DetailViewController" customModule="eyeDoor" customModuleProvider="target" sceneMemberID="viewController">
@@ -338,12 +338,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gxH-3k-PV4"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Name" id="btO-eW-5Eh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="rV6-eW-iGl">
+                            <connections>
+                                <action selector="deleteFriend:" destination="1yq-9r-6H5" id="p2I-AG-iJC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="eventTableView" destination="E0w-yq-OUa" id="spu-52-4I7"/>
                         <outlet property="friendImageView" destination="LpD-ao-eFZ" id="d8q-Qa-HbE"/>
+                        <segue destination="a65-bR-Tye" kind="unwind" identifier="cancel" unwindAction="unwindWithSegue:" id="8rK-8J-Kg5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucz-UX-i2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="a65-bR-Tye" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3931.884057971015" y="-464.0625"/>
         </scene>
