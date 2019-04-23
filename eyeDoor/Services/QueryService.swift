@@ -328,5 +328,52 @@ class QueryService {
         return
     }
     
+    static func verifyUser(completion: @escaping (_ auth: Bool) -> Void) {
+        var jsonAuth = false
+        
+        let defaults = UserDefaults.standard
+        let token = defaults.string(forKey: "token")
+        
+        let url = URL(string: "https://joseph-frank.com/api/login")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(token, forHTTPHeaderField: "x-access-token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print("beginning of task")
+            guard let data = data, let response = response as? HTTPURLResponse,
+                error == nil else {
+                    print("error", error ?? "unknown error")
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                DispatchQueue.main.async{
+                    completion(false)
+                }
+                return
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            
+            do {
+                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                jsonAuth = jsonResponse!["auth"] as! Bool
+            
+                print("responseString = \(responseString)")
+                print(jsonAuth)
+                DispatchQueue.main.async{
+                    completion(jsonAuth)
+                }
+            } catch {
+                return
+            }
+        }
+        task.resume()
+    }
+    
 }
 
