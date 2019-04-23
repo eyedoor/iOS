@@ -265,35 +265,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAy-dT-8fO">
-                                <rect key="frame" x="124" y="355" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJr-5Y-kyc" customClass="DesignableView" customModule="eyeDoor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientColor1">
+                                        <color key="value" red="0.76078431369999999" green="0.91372549020000005" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientColor2">
+                                        <color key="value" red="0.63137254899999995" green="0.76862745099999996" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LpD-ao-eFZ">
-                                <rect key="frame" x="20" y="20" width="374" height="200"/>
+                                <rect key="frame" x="20" y="20" width="374" height="374"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Szh-9f-vmk"/>
+                                    <constraint firstAttribute="width" constant="374" id="9VK-iD-Ker"/>
+                                    <constraint firstAttribute="height" constant="374" id="Szh-9f-vmk"/>
                                 </constraints>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E0w-yq-OUa">
+                                <rect key="frame" x="0.0" y="414" width="414" height="394"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendEventTableViewIdentifier" id="Mqo-a9-BkC" customClass="FriendEventTableViewCell" customModule="eyeDoor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mqo-a9-BkC" id="w7I-c5-I2h">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMI-uS-Cq7">
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="99.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AMI-uS-Cq7" firstAttribute="top" secondItem="w7I-c5-I2h" secondAttribute="top" id="4Ho-GE-s7R"/>
+                                                <constraint firstItem="AMI-uS-Cq7" firstAttribute="leading" secondItem="w7I-c5-I2h" secondAttribute="leading" constant="16" id="7BZ-2B-fHZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="AMI-uS-Cq7" secondAttribute="trailing" constant="16" id="phG-eW-GT1"/>
+                                                <constraint firstAttribute="bottom" secondItem="AMI-uS-Cq7" secondAttribute="bottom" id="tGd-hz-LgZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateTimeLabel" destination="AMI-uS-Cq7" id="AJo-5O-JX4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1yq-9r-6H5" id="SBH-9G-L3G"/>
+                                    <outlet property="delegate" destination="1yq-9r-6H5" id="dIr-gW-PVX"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GJr-5Y-kyc" secondAttribute="bottom" id="8TX-aw-xkt"/>
+                            <constraint firstItem="E0w-yq-OUa" firstAttribute="leading" secondItem="gxH-3k-PV4" secondAttribute="leading" id="DTX-bZ-atj"/>
                             <constraint firstItem="LpD-ao-eFZ" firstAttribute="top" secondItem="gxH-3k-PV4" secondAttribute="top" constant="20" id="EFz-o5-SWO"/>
                             <constraint firstItem="LpD-ao-eFZ" firstAttribute="leading" secondItem="gxH-3k-PV4" secondAttribute="leading" constant="20" id="F5q-Mb-hyj"/>
+                            <constraint firstItem="GJr-5Y-kyc" firstAttribute="trailing" secondItem="gxH-3k-PV4" secondAttribute="trailing" id="RpE-0r-Nvl"/>
+                            <constraint firstItem="GJr-5Y-kyc" firstAttribute="leading" secondItem="gxH-3k-PV4" secondAttribute="leading" id="TF7-sO-og3"/>
+                            <constraint firstItem="GJr-5Y-kyc" firstAttribute="top" secondItem="PGj-Ig-y74" secondAttribute="top" id="cB8-7x-1pu"/>
+                            <constraint firstItem="E0w-yq-OUa" firstAttribute="trailing" secondItem="gxH-3k-PV4" secondAttribute="trailing" id="mDM-YR-geL"/>
+                            <constraint firstItem="E0w-yq-OUa" firstAttribute="top" secondItem="LpD-ao-eFZ" secondAttribute="bottom" constant="20" id="sSQ-a5-OaG"/>
+                            <constraint firstAttribute="bottom" secondItem="E0w-yq-OUa" secondAttribute="bottom" id="shG-MF-MMK"/>
                             <constraint firstItem="gxH-3k-PV4" firstAttribute="trailing" secondItem="LpD-ao-eFZ" secondAttribute="trailing" constant="20" id="y0c-1c-1Xc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gxH-3k-PV4"/>
                     </view>
                     <connections>
+                        <outlet property="eventTableView" destination="E0w-yq-OUa" id="spu-52-4I7"/>
                         <outlet property="friendImageView" destination="LpD-ao-eFZ" id="d8q-Qa-HbE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucz-UX-i2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3932" y="-464"/>
+            <point key="canvasLocation" x="3931.884057971015" y="-464.0625"/>
         </scene>
         <!--Add New Person-->
         <scene sceneID="GX3-Kx-Unv">

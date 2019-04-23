@@ -102,6 +102,7 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
             let person = self.friends[indexPaths!.row] as Person
             detailsVC.firstName = person.firstName
             detailsVC.lastName = person.lastName
+            detailsVC.friendID = person.personID
             if let image = person.image{
                 print("not nil")
                 detailsVC.friendImageView?.image = image
