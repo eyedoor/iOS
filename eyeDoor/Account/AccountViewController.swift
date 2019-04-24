@@ -39,11 +39,26 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction func logoutAction(_ sender: Any) {
-        //log user out
-        //if successful, then go back to start
-        let defaults = UserDefaults.standard
-        defaults.set(false, forKey: "LoggedIn")
-        defaults.set(nil, forKey: "token")
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrentUser")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+               context.delete(data)
+            }
+            //log user out
+            //if successful, then go back to start
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "LoggedIn")
+            defaults.set(nil, forKey: "token")
+        } catch {
+            print("Failed")
+        }
         //self.performSegue(withIdentifier: "accountToStart", sender: self)
     }
     
