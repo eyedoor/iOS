@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         
         QueryService.getEvents{ (events) in
             //print("friends list is \(friends)")

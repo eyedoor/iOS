@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SignUpViewController: UIViewController,UITextFieldDelegate  {
 
@@ -58,12 +59,28 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
                 if (auth == true) {
                     print("logging user in")
                 
-                    QueryService.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, completion: {(auth: Bool) -> Void in
+                    QueryService.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, completion: {(auth: Bool, newUser: User) -> Void in
                         print("auth is \(auth)")
                         if(auth == true){
-                            let defaults = UserDefaults.standard
-                            defaults.set(true, forKey: "LoggedIn")
-                            self.performSegue(withIdentifier: "signupToHome", sender: self)
+                            
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            let context = appDelegate.persistentContainer.viewContext
+                            let entity = NSEntityDescription.entity(forEntityName: "CurrentUser", in: context)
+                            let createNewUser = NSManagedObject(entity: entity!, insertInto: context)
+                            
+                            createNewUser.setValue(newUser.deviceToken, forKey: "deviceToken")
+                            createNewUser.setValue(newUser.email, forKey: "email")
+                            createNewUser.setValue(newUser.firstName, forKey: "firstname")
+                            createNewUser.setValue(newUser.lastName, forKey: "lastname")
+                            
+                            do {
+                                try context.save()
+                                let defaults = UserDefaults.standard
+                                defaults.set(true, forKey: "LoggedIn")
+                                self.performSegue(withIdentifier: "signUpToHome", sender: self)
+                            } catch {
+                                print("Failed saving")
+                            }
                         } else {
                             let alertController = UIAlertController(title: "Error", message: "Could not log into new account", preferredStyle: .alert)
                             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

@@ -6,7 +6,8 @@
 //  Copyright © 2019 Nathan Schlechte. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 class QueryService {
     
@@ -55,8 +56,9 @@ class QueryService {
         return
     }
     
-    static func loginUser(email: String, password: String, completion: @escaping (_ auth: Bool) -> Void) {
+    static func loginUser(email: String, password: String, completion: @escaping (_ auth: Bool, _ newUser: User) -> Void) {
         var jsonAuth = false
+        
     
         let url = URL(string: "https://joseph-frank.com/api/login")!
         var request = URLRequest(url: url)
@@ -81,31 +83,59 @@ class QueryService {
                 print("statusCode should be 2xx, but is \(response.statusCode)")
                 print("response = \(response)")
                 DispatchQueue.main.async{
-                    completion(false)
+                    completion(false, User())
                 }
                 return
             }
             
-            let responseString = String(data: data, encoding: .utf8)
-            
             do {
-                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-                jsonAuth = jsonResponse!["auth"] as! Bool
-                let jsonToken = jsonResponse!["token"] as! String
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    data, options: [])
+                //print("jsonResponse is \(jsonResponse)")
+                guard let jsonArray = jsonResponse as? [String: Any] else {
+                    return
+                }
                 
-                //if user is validated, assign token
+                let currentUser = User(jsonArray)
+                
+                jsonAuth = currentUser.auth
+                let jsonToken = currentUser.token
+                
                 if (jsonAuth == true) {
                     let defaults = UserDefaults.standard
                     defaults.set(jsonToken, forKey: "token")
+                    
+                    print(currentUser)
                 }
-                print("responseString = \(responseString)")
-                print(jsonAuth)
+                
                 DispatchQueue.main.async{
-                    completion(jsonAuth)
+                    completion(jsonAuth, currentUser)
                 }
-            } catch {
-                return
+                
+            } catch let parsingError {
+                print("Error", parsingError)
             }
+            
+//            let responseString = String(data: data, encoding: .utf8)
+//
+//            do {
+//                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+//                jsonAuth = jsonResponse!["auth"] as! Bool
+//                let jsonToken = jsonResponse!["token"] as! String
+//
+//                //if user is validated, assign token
+//                if (jsonAuth == true) {
+//                    let defaults = UserDefaults.standard
+//                    defaults.set(jsonToken, forKey: "token")
+//                }
+//                print("responseString = \(responseString)")
+//                print(jsonAuth)
+//                DispatchQueue.main.async{
+//                    completion(jsonAuth)
+//                }
+//            } catch {
+//                return
+//            }
         }
         task.resume()
     }

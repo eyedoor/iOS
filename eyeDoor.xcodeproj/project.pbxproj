@@ -11,6 +11,8 @@
 		FF0A377022413826001C7B1E /* MyPeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A376F22413826001C7B1E /* MyPeopleCollectionViewCell.swift */; };
 		FF0A3772224138F3001C7B1E /* MyPeopleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A3771224138F3001C7B1E /* MyPeopleCollectionViewController.swift */; };
 		FF0F43C4226F54EE009B7DDD /* FriendEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */; };
+		FF0F43C62270AEFC009B7DDD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F43C52270AEFC009B7DDD /* User.swift */; };
+		FF0F43C92270B5DB009B7DDD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF0F43C72270B5DB009B7DDD /* Model.xcdatamodeld */; };
 		FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B06A62252EFF600EAD4ED /* Event.swift */; };
 		FF4BFB6C225300D900DEC25E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BFB6B225300D900DEC25E /* DetailViewController.swift */; };
 		FF4BFB6E2253A17A00DEC25E /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */; };
@@ -41,6 +43,8 @@
 		FF0A376F22413826001C7B1E /* MyPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF0A3771224138F3001C7B1E /* MyPeopleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPeopleCollectionViewController.swift; sourceTree = "<group>"; };
 		FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendEventTableViewCell.swift; sourceTree = "<group>"; };
+		FF0F43C52270AEFC009B7DDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FF0F43C82270B5DB009B7DDD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FF2B06A62252EFF600EAD4ED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FF4BFB6B225300D900DEC25E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		FF7412422202546000826CF7 = {
 			isa = PBXGroup;
 			children = (
+				FF0F43C72270B5DB009B7DDD /* Model.xcdatamodeld */,
 				FF74124D2202546000826CF7 /* eyeDoor */,
 				FF74124C2202546000826CF7 /* Products */,
 				0D5406DEB98167477677F363 /* Pods */,
@@ -181,6 +186,7 @@
 				FF4BFB6B225300D900DEC25E /* DetailViewController.swift */,
 				FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */,
 				FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */,
+				FF0F43C52270AEFC009B7DDD /* User.swift */,
 			);
 			path = eyeDoor;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF5CE0A3221C5A4400DFA386 /* LoginViewController.swift in Sources */,
+				FF0F43C92270B5DB009B7DDD /* Model.xcdatamodeld in Sources */,
 				FFAA2B292202592F0020AA7D /* MenuViewController.swift in Sources */,
 				FF5CE0A5221C5D4100DFA386 /* SignUpViewController.swift in Sources */,
 				FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */,
@@ -318,6 +325,7 @@
 				FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */,
 				FF4BFB6E2253A17A00DEC25E /* EventTableViewCell.swift in Sources */,
 				FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */,
+				FF0F43C62270AEFC009B7DDD /* User.swift in Sources */,
 				FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */,
 				FF4BFB6C225300D900DEC25E /* DetailViewController.swift in Sources */,
 				FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */,
@@ -530,6 +538,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF0F43C72270B5DB009B7DDD /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF0F43C82270B5DB009B7DDD /* Model.xcdatamodel */,
+			);
+			currentVersion = FF0F43C82270B5DB009B7DDD /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FF7412432202546000826CF7 /* Project object */;
 }
