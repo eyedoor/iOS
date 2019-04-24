@@ -7,11 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
 class AccountViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var deviceIDLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrentUser")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                nameLabel.text = "\(data.value(forKey: "firstname") as! String)\(data.value(forKey: "lastname") as! String)"
+                //deviceIDLabel.text = data.value(forKey: "deviceToken") as! String
+                emailLabel.text = data.value(forKey: "email") as! String
+            }
+        } catch {
+            print("Failed")
+        }
 
         // Do any additional setup after loading the view.
     }

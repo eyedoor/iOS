@@ -171,6 +171,11 @@
                     <navigationItem key="navigationItem" title="Account" id="jp5-Gx-Aj7">
                         <barButtonItem key="backBarButtonItem" title="Home" id="PBO-H9-3KG"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="deviceIDLabel" destination="g8c-nV-rfP" id="2TJ-Ik-7UI"/>
+                        <outlet property="emailLabel" destination="d8M-e2-7Mg" id="GUy-Zs-c5f"/>
+                        <outlet property="nameLabel" destination="2vc-cp-nsX" id="2LL-B2-5vR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CkF-sM-e9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wiA-sr-kX7" userLabel="Exit" sceneMemberID="exit"/>
