@@ -12,7 +12,6 @@ import CoreData
 class AccountViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var deviceIDLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
@@ -28,7 +27,6 @@ class AccountViewController: UIViewController {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
                 nameLabel.text = "\(data.value(forKey: "firstname") as! String)\(data.value(forKey: "lastname") as! String)"
-                //deviceIDLabel.text = data.value(forKey: "deviceToken") as! String
                 emailLabel.text = data.value(forKey: "email") as! String
             }
         } catch {
