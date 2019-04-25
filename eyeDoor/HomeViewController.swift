@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -15,56 +16,132 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var eventImageView: UIImageView!
     
-    var events = [Event]()
+    var events = [EventStruct]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Event", in: context)
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Event")
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                var newEvent = EventStruct(eventID: data.value(forKey: "eventID") as! Int, timeSent: data.value(forKey: "date") as! String, imageString: data.value(forKey: "image") as? NSData)
+                if !self.events.contains(where: {$0.eventID == newEvent.eventID}){
+                    self.events.append(newEvent)
+                }
+            }
+            self.eventsTableView.reloadData()
+            
+        } catch {
+            print("Failed")
+        }
+        
+        if (self.events.count == 0){
+            print("loading events")
+            loadEvents()
+        } else {
+            self.eventImageView.image = events[0].image
+            let indexPath = IndexPath.init(row: 0, section: 0)
+            self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //loadEvents()
+    }
     
-        
+    func saveEvents(events: Any){
+        ///only add person if they dont exist******
+        for event in events as! [EventStruct] {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Event", in: context)
+            
+            let request = NSFetchRequest<NSManagedObject>(entityName: "Event")
+            request.predicate = NSPredicate(format: "eventID = %d", event.eventID)
+            
+            var results: [NSManagedObject] = []
+            
+            do {
+                results = try context.fetch(request)
+                
+            }
+            catch {
+                print("error executing fetch request: \(error)")
+            }
+            
+            if (results.count == 0){
+                let createNewEvent = NSManagedObject(entity: entity!, insertInto: context)
+                createNewEvent.setValue(event.eventID, forKey: "eventID")
+                createNewEvent.setValue(event.timeSent, forKey: "date")
+            }
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+            
+        }
+    }
+    func loadEvents(){
         QueryService.getEvents{ (events) in
-            //print("friends list is \(friends)")
-            //self.friends = friends as! [Person]
             DispatchQueue.main.async {
-                self.events = events as! [Event]
-                self.eventsTableView.reloadData()
+                
+                self.saveEvents(events: events)
+                
+                self.events = events as! [EventStruct]
                 
                 if (events.count != 0){
-                    QueryService.getEventImage(eventID: self.events[0].eventID) { (base64Image) in
-                        //print("friends list is \(friends)")
-                        //self.friends = friends as! [Person]
-                        DispatchQueue.main.async {
-                            //self.events = events as! [Event]
-                            //self.eventsTableView.reloadData()
+                    for (index, event) in self.events.enumerated(){
+                        QueryService.getEventImage(eventID: event.eventID) { (base64Image) in
+                           
+                            
+                                //self.events = events as! [Event]
+                                //self.eventsTableView.reloadData()
+                            
                             let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
-                            let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-                            self.eventImageView.image = decodedimage
-                            //self.eventsTableView.reloadData()
-                            let indexPath = IndexPath.init(row: 0, section: 0)
-                            self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
+                            
+                                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                                self.events[index].image = decodedimage
+                                
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                let context = appDelegate.persistentContainer.viewContext
+                                let entity = NSEntityDescription.entity(forEntityName: "Event", in: context)
+                                
+                                let request = NSFetchRequest<NSManagedObject>(entityName: "Event")
+                                request.predicate = NSPredicate(format: "eventID = %d", event.eventID)
+                                
+                                var results: [NSManagedObject] = []
+                                
+                                do {
+                                    results = try context.fetch(request)
+                                    //results as! [NSManagedObject]
+                                    for data in results as! [NSManagedObject]{
+                                        data.setValue(dataDecoded, forKey: "image")
+                                    }
+                                    try context.save()
+                                }
+                                catch {
+                                    print("error executing fetch request: \(error)")
+                                }
+                                
+                                self.eventsTableView.reloadData()
+                                    let indexPath = IndexPath.init(row: 0, section: 0)
+                                    self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
+                            
                         }
                     }
                 }
                 
             }
+            
         }
-        
-        
-//        QueryService.getEventImage(eventID: events.last!.eventID) { (base64Image) in
-//            //print("friends list is \(friends)")
-//            //self.friends = friends as! [Person]
-//            DispatchQueue.main.async {
-//                //self.events = events as! [Event]
-//                //self.eventsTableView.reloadData()
-//                let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
-//                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-//                self.eventImageView.image = decodedimage
-//                //self.eventsTableView.reloadData()
-//            }
-//        }
-        
-        
-
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,26 +172,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("selected")
         var currentEventID = events[indexPath.row].eventID
-        //print(currentEventID)
-        QueryService.getEventImage(eventID: currentEventID) { (base64Image) in
-            //print("friends list is \(friends)")
-            //self.friends = friends as! [Person]
-            DispatchQueue.main.async {
-                //self.events = events as! [Event]
-                //self.eventsTableView.reloadData()
-                
-                let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
-                if let decodedimage:UIImage = UIImage(data: dataDecoded as Data) {
-                    self.eventImageView.image = decodedimage
-                } else {
-                    self.eventImageView.image = nil
-                }
-                //self.eventImageView.image = decodedimage
-                //self.eventsTableView.reloadData()
-            }
-        }
+        print(currentEventID)
+        
+        self.eventImageView.image = events[indexPath.row].image
     }
     
 
