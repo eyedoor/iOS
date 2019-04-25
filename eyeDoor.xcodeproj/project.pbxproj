@@ -13,7 +13,7 @@
 		FF0F43C4226F54EE009B7DDD /* FriendEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */; };
 		FF0F43C62270AEFC009B7DDD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F43C52270AEFC009B7DDD /* User.swift */; };
 		FF0F43C92270B5DB009B7DDD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF0F43C72270B5DB009B7DDD /* Model.xcdatamodeld */; };
-		FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B06A62252EFF600EAD4ED /* Event.swift */; };
+		FF2B06A72252EFF600EAD4ED /* EventStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B06A62252EFF600EAD4ED /* EventStruct.swift */; };
 		FF4BFB6C225300D900DEC25E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BFB6B225300D900DEC25E /* DetailViewController.swift */; };
 		FF4BFB6E2253A17A00DEC25E /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */; };
 		FF5CE0A1221C565000DFA386 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5CE0A0221C565000DFA386 /* StartViewController.swift */; };
@@ -45,7 +45,7 @@
 		FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendEventTableViewCell.swift; sourceTree = "<group>"; };
 		FF0F43C52270AEFC009B7DDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FF0F43C82270B5DB009B7DDD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		FF2B06A62252EFF600EAD4ED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FF2B06A62252EFF600EAD4ED /* EventStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStruct.swift; sourceTree = "<group>"; };
 		FF4BFB6B225300D900DEC25E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FF5CE0A0221C565000DFA386 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				FFAA2B282202592F0020AA7D /* MenuViewController.swift */,
 				FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */,
 				FF5CE0A0221C565000DFA386 /* StartViewController.swift */,
-				FF2B06A62252EFF600EAD4ED /* Event.swift */,
+				FF2B06A62252EFF600EAD4ED /* EventStruct.swift */,
 				FF4BFB6B225300D900DEC25E /* DetailViewController.swift */,
 				FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */,
 				FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */,
@@ -328,7 +328,7 @@
 				FF0F43C62270AEFC009B7DDD /* User.swift in Sources */,
 				FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */,
 				FF4BFB6C225300D900DEC25E /* DetailViewController.swift in Sources */,
-				FF2B06A72252EFF600EAD4ED /* Event.swift in Sources */,
+				FF2B06A72252EFF600EAD4ED /* EventStruct.swift in Sources */,
 				FF0F43C4226F54EE009B7DDD /* FriendEventTableViewCell.swift in Sources */,
 				FF0A377022413826001C7B1E /* MyPeopleCollectionViewCell.swift in Sources */,
 				FFFCFFBC223FE079004E94A5 /* NewPersonViewController.swift in Sources */,

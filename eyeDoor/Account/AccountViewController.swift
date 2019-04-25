@@ -40,6 +40,7 @@ class AccountViewController: UIViewController {
         
         deleteAllData(entity: "CurrentUser")
         deleteAllData(entity: "Friend")
+        deleteAllData(entity: "Event")
         
         let defaults = UserDefaults.standard
         defaults.set(false, forKey: "LoggedIn")

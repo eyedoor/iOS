@@ -17,7 +17,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var lastName: String = ""
     var friendID: Int = -1
     
-    var events = [Event]()
+    var events = [EventStruct]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             //print("friends list is \(friends)")
             //self.friends = friends as! [Person]
             DispatchQueue.main.async {
-                self.events = events as! [Event]
+                self.events = events as! [EventStruct]
                 self.eventTableView.reloadData()
                 print(events)
                 if (events.count > 0){

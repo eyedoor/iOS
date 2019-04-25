@@ -22,7 +22,8 @@ class StartViewController: UIViewController {
             QueryService.verifyUser(completion: {(auth: Bool) -> Void in
                 print("auth is \(auth)")
                 if(auth == true){
-                    self.validateFace()
+                    //self.validateFace()
+                    self.performSegue(withIdentifier: "startToHome", sender: self)
                 } else {
                     let alertController = UIAlertController(title: "Error", message: "You have been signed out.  Please login again.", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

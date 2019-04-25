@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         print("logging in user")
         
         QueryService.loginUser(email: emailTextField.text!, password: passwordTextField.text!, completion: {(auth: Bool, newUser: User)  -> Void in
-            print("auth is \(auth)")
+            //print("auth is \(auth)")
             if(auth == true){
                 
                 
