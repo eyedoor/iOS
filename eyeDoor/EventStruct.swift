@@ -29,7 +29,7 @@ struct EventStruct {
         
         if (imageString != nil){
             //            let dataDecoded:NSData = NSData(base64Encoded: imageString!, options: NSData.Base64DecodingOptions(rawValue: 0))!
-            let decodedimage:UIImage = UIImage(data: imageString! as Data)!
+            let decodedimage:UIImage = UIImage(data: imageString! as Data) ?? UIImage(named: "Person")!
             self.image = decodedimage
         }
     }

@@ -43,6 +43,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if (self.events.count == 0){
             print("loading events")
             loadEvents()
+            
         } else {
             self.eventImageView.image = events[0].image
             let indexPath = IndexPath.init(row: 0, section: 0)
@@ -52,7 +53,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadEvents()
+        self.eventsTableView.addSubview(self.refreshControl)
     }
     
     func saveEvents(events: Any){
@@ -100,14 +101,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if (events.count != 0){
                     for (index, event) in self.events.enumerated(){
                         QueryService.getEventImage(eventID: event.eventID) { (base64Image) in
-                           
-                            
-                                //self.events = events as! [Event]
-                                //self.eventsTableView.reloadData()
-                            
                             let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
                             
-                                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                            let decodedimage:UIImage = UIImage(data: dataDecoded as Data) ?? UIImage(named: "Person")!
                                 self.events[index].image = decodedimage
                                 
                                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -132,15 +128,55 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 }
                                 
                                 self.eventsTableView.reloadData()
+                            self.eventImageView.image = self.events[0].image
                                     let indexPath = IndexPath.init(row: 0, section: 0)
                                     self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
                             
                         }
                     }
+                    
                 }
                 
             }
             
+        }
+    }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.white
+        
+        return refreshControl
+    }()
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        print("refreshing")
+        //not full load events   just like the onviewappear
+        deleteAllData(entity: "Event")
+        loadEvents()
+        
+        self.eventsTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    func deleteAllData(entity: String)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
         }
     }
     
