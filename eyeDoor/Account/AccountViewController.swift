@@ -38,26 +38,57 @@ class AccountViewController: UIViewController {
     
     @IBAction func logoutAction(_ sender: Any) {
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        deleteAllData(entity: "CurrentUser")
+        deleteAllData(entity: "Friend")
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrentUser")
-        
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-               context.delete(data)
-            }
-            //log user out
-            //if successful, then go back to start
-            let defaults = UserDefaults.standard
-            defaults.set(false, forKey: "LoggedIn")
-            defaults.set(nil, forKey: "token")
-        } catch {
-            print("Failed")
-        }
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "LoggedIn")
+        defaults.set(nil, forKey: "token")
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
+//
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrentUser")
+//        let request2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Friend")
+//
+//        request.returnsObjectsAsFaults = false
+//        do {
+//            let result = try context.fetch(request)
+//            let result2 = try context.fetch(request)
+//            for data in result as! [NSManagedObject] {
+//               context.delete(data)
+//            }
+//            for data in result2 as! [NSManagedObject] {
+//                context.delete(data)
+//            }
+//            //log user out
+//            //if successful, then go back to start
+//            let defaults = UserDefaults.standard
+//            defaults.set(false, forKey: "LoggedIn")
+//            defaults.set(nil, forKey: "token")
+//        } catch {
+//            print("Failed")
+//        }
         //self.performSegue(withIdentifier: "accountToStart", sender: self)
+    }
+    
+    func deleteAllData(entity: String)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }
     }
     
     /*

@@ -28,18 +28,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.events = events as! [Event]
                 self.eventsTableView.reloadData()
                 
-                QueryService.getEventImage(eventID: self.events[0].eventID) { (base64Image) in
-                    //print("friends list is \(friends)")
-                    //self.friends = friends as! [Person]
-                    DispatchQueue.main.async {
-                        //self.events = events as! [Event]
-                        //self.eventsTableView.reloadData()
-                        let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
-                        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-                        self.eventImageView.image = decodedimage
-                        //self.eventsTableView.reloadData()
-                        let indexPath = IndexPath.init(row: 0, section: 0)
-                        self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
+                if (events.count != 0){
+                    QueryService.getEventImage(eventID: self.events[0].eventID) { (base64Image) in
+                        //print("friends list is \(friends)")
+                        //self.friends = friends as! [Person]
+                        DispatchQueue.main.async {
+                            //self.events = events as! [Event]
+                            //self.eventsTableView.reloadData()
+                            let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                            let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                            self.eventImageView.image = decodedimage
+                            //self.eventsTableView.reloadData()
+                            let indexPath = IndexPath.init(row: 0, section: 0)
+                            self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
+                        }
                     }
                 }
                 

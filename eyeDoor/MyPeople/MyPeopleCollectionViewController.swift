@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 final class MyPeopleCollectionViewController: UICollectionViewController {
     // MARK: - Properties
@@ -19,34 +20,116 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
     
     var friends = [Person]()
     
+    
     override func viewDidAppear(_ animated: Bool) {
-//        QueryService.getFriendNames { (friends) in
-//            //print("friends list is \(friends)")
-//            //self.friends = friends as! [Person]
-//            DispatchQueue.main.async {
-//                self.friends = friends as! [Person]
-//                //self.collectionView.reloadData()
-//                for (index, friend) in self.friends.enumerated(){
-//                    QueryService.getFriendImage(friendID: friend.personID) { (base64Image) in
-//                        //print("attempting to get image")
-//                        let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
-//                        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-//                        self.friends[index].image = decodedimage
-//                        //print(self.friends[index].image)
-//                        //print("trying to reload")
-//                        self.collectionView.reloadData()
-//
-//                    }
-//                }
-//            }
-//        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Friend", in: context)
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Friend")
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                var newPerson = Person(firstname: data.value(forKey: "firstname") as! String, lastname: data.value(forKey: "lastname") as! String, personID: data.value(forKey: "friendID") as! Int, imageString: data.value(forKey: "image") as? NSData)
+                if !self.friends.contains(where: {$0.personID == newPerson.personID}){
+                    //print(newPerson.image)
+                    self.friends.append(newPerson)
+                }
+                
+                //print(newPerson)
+            }
+            self.collectionView.reloadData()
+        } catch {
+            print("Failed")
+        }
+        
+        if (self.friends.count == 0){
+            print("loading friends")
+            loadFriends()
+        }
+    }
+    
+    
+    override func viewDidLoad() {
+        
+    }
+    
+    func saveFriends(friends: Any){
+        ///only add person if they dont exist******
+        for friend in friends as! [Person] {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Friend", in: context)
+            
+            let request = NSFetchRequest<NSManagedObject>(entityName: "Friend")
+            request.predicate = NSPredicate(format: "friendID = %d", friend.personID)
+            
+            var results: [NSManagedObject] = []
+            
+            do {
+                results = try context.fetch(request)
+                
+            }
+            catch {
+                print("error executing fetch request: \(error)")
+            }
+            
+            if (results.count == 0){
+                let createNewFriend = NSManagedObject(entity: entity!, insertInto: context)
+                createNewFriend.setValue(friend.firstName, forKey: "firstname")
+                createNewFriend.setValue(friend.lastName, forKey: "lastname")
+                createNewFriend.setValue(friend.personID, forKey: "friendID")
+            }
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+            
+        }
+    }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        deleteAllData(entity: "Friend")
+        loadFriends()
+    }
+    
+    func deleteAllData(entity: String)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }
+    }
+    
+    func loadFriends(){
         QueryService.getFriendNames { (friends) in
             //print("friends list is \(friends)")
             //self.friends = friends as! [Person]
             DispatchQueue.main.async {
+                
+                self.saveFriends(friends: friends)
+                
                 self.friends = friends as! [Person]
                 //self.collectionView.reloadData()
                 for (index, friend) in self.friends.enumerated(){
@@ -55,42 +138,34 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
                         let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
                         let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                         self.friends[index].image = decodedimage
-                        //print(self.friends[index].image)
-                        //print("trying to reload")
+                        ///
+                        
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        let context = appDelegate.persistentContainer.viewContext
+                        let entity = NSEntityDescription.entity(forEntityName: "Friend", in: context)
+                        
+                        let request = NSFetchRequest<NSManagedObject>(entityName: "Friend")
+                        request.predicate = NSPredicate(format: "friendID = %d", friend.personID)
+                        
+                        var results: [NSManagedObject] = []
+                        
+                        do {
+                            results = try context.fetch(request)
+                            //results as! [NSManagedObject]
+                            for data in results as! [NSManagedObject]{
+                                data.setValue(dataDecoded, forKey: "image")
+                            }
+                            try context.save()
+                        }
+                        catch {
+                            print("error executing fetch request: \(error)")
+                        }
                         self.collectionView.reloadData()
                         
                     }
                 }
             }
         }
-
-    }
-    
-    override func viewDidLoad() {
-//        QueryService.getFriendNames { (friends) in
-//            //print("friends list is \(friends)")
-//            //self.friends = friends as! [Person]
-//            DispatchQueue.main.async {
-//                self.friends = friends as! [Person]
-//                //self.collectionView.reloadData()
-//                for (index, friend) in self.friends.enumerated(){
-//                    QueryService.getFriendImage(friendID: friend.personID) { (base64Image) in
-//                        //print("attempting to get image")
-//                        let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
-//                        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-//                        self.friends[index].image = decodedimage
-//                        //print(self.friends[index].image)
-//                        //print("trying to reload")
-//                        self.collectionView.reloadData()
-//                    }
-//                }
-//            }
-//        }
-        
-    }
-    
-    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -141,15 +216,18 @@ extension MyPeopleCollectionViewController {
         
         //let cell = MyPeopleCollectionViewCell()
         //2
-        cell.personImageView.backgroundColor = UIColor.black
+        cell.personImageView.backgroundColor = UIColor.white
         if let personPhoto = friends[indexPath.row].image {
             cell.personImageView.image = personPhoto
+        } else {
+            cell.personImageView.image = UIImage(named: "Person")
         }
         
         var name = ""
         if (friends.count != 0 && friends.count > indexPath.row){
             name = friends[indexPath.row].firstName
         }
+    
         
         //3
         //cell.imageView.image = personPhoto.thumbnail
