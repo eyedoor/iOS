@@ -73,6 +73,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }

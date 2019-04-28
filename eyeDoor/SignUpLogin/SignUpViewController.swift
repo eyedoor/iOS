@@ -21,10 +21,13 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstnameTextField.delegate = self
+        lastnameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPassTextField.delegate = self
-        firstnameTextField.tag = 0
+        confirmPassTextField.keyboardType = UIKeyboardType.alphabet
+        //firstnameTextField.tag = 0
         signupButton.isEnabled = false
         [firstnameTextField, lastnameTextField, emailTextField, passwordTextField, confirmPassTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
     }
@@ -33,6 +36,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
     {
         // Try to find next responder
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            textField.resignFirstResponder()
             nextField.becomeFirstResponder()
         } else {
             // Not found, so remove keyboard.
@@ -72,7 +76,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
                                 try context.save()
                                 let defaults = UserDefaults.standard
                                 defaults.set(true, forKey: "LoggedIn")
-                                self.performSegue(withIdentifier: "signUpToHome", sender: self)
+                                self.performSegue(withIdentifier: "signupToHome", sender: self)
                             } catch {
                                 print("Failed saving")
                             }

@@ -156,12 +156,6 @@ final class MyPeopleCollectionViewController: UICollectionViewController {
             detailsVC.firstName = person.firstName
             detailsVC.lastName = person.lastName
             detailsVC.friendID = person.personID
-            if let image = person.image{
-                print("not nil")
-                detailsVC.friendImageView?.image = image
-                print(image)
-            }
-            print(person.image)
             
             let backItem = UIBarButtonItem()
             backItem.title = "Back"

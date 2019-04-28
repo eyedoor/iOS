@@ -35,6 +35,7 @@ class NewPersonViewController: UIViewController {
     @IBAction func saveButtonAction(_ sender: Any) {
         
         
+        
         let image = personImageView.image!
         let reducedImage = image.resized(withPercentage: 0.3)
         
@@ -42,7 +43,6 @@ class NewPersonViewController: UIViewController {
         let imageData = reducedImage!.pngData()
         let strBase64 = imageData?.base64EncodedString()
         QueryService.createPerson(firstname: firstNameTextField.text!, lastname: lastNameTextField.text!, image: strBase64!, completion: {(success: Bool) -> Void in
-            print("success is \(success)")
             if(success == true){
                 self.performSegue(withIdentifier: "cancel", sender: self)
             } else {
