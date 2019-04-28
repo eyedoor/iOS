@@ -19,7 +19,6 @@ class StartViewController: UIViewController {
             let token = defaults.string(forKey: "token")
             //call api for token verification
             QueryService.verifyUser(completion: {(auth: Bool) -> Void in
-                print("auth is \(auth)")
                 if(auth == true){
                     self.validateFace()
                 } else {
