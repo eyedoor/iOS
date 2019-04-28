@@ -10,7 +10,7 @@ import UIKit
 import LocalAuthentication
 
 class StartViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults = UserDefaults.standard
@@ -18,12 +18,10 @@ class StartViewController: UIViewController {
         if (isLoggedIn == true){
             let token = defaults.string(forKey: "token")
             //call api for token verification
-            
             QueryService.verifyUser(completion: {(auth: Bool) -> Void in
                 print("auth is \(auth)")
                 if(auth == true){
-                    //self.validateFace()
-                    self.performSegue(withIdentifier: "startToHome", sender: self)
+                    self.validateFace()
                 } else {
                     let alertController = UIAlertController(title: "Error", message: "You have been signed out.  Please login again.", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -34,11 +32,8 @@ class StartViewController: UIViewController {
                 
             })
             
-            //validateFace()
-            //self.performSegue(withIdentifier: "startToHome", sender: self)
-            
         }
-
+        
     }
     
     
@@ -55,33 +50,17 @@ class StartViewController: UIViewController {
                     DispatchQueue.main.async {
                         if success {
                             self.performSegue(withIdentifier: "startToHome", sender: self)
-                            // User authenticated successfully, take appropriate action
-                            //self.successLabel.text = "Awesome!!... User authenticated successfully"
                         } else {
-                            
-                            // User did not authenticate successfully, look at error and take appropriate action
-                            //self.successLabel.text = "Sorry!!... User did not authenticate successfully"
                         }
                     }
                 }
             } else {
-                // Could not evaluate policy; look at authError and present an appropriate message to user
-                //successLabel.text = "Sorry!!.. Could not evaluate policy."
             }
         }
     }
-
+    
     @IBAction func restartWithSegue(_ segue: UIStoryboardSegue) {
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

@@ -12,7 +12,6 @@ import CoreData
 class QueryService {
     
     static func createUser(email: String, password: String, firstname: String, lastname: String, completion: @escaping (_ auth: Bool) -> Void){
-        //var didCreate = false
         let url = URL(string: "https://joseph-frank.com/api/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -44,22 +43,17 @@ class QueryService {
             
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
             DispatchQueue.main.async{
                 completion(true)
             }
-           // didCreate = true
         }
         task.resume()
-        
-        //print(didCreate)
         return
     }
     
     static func loginUser(email: String, password: String, completion: @escaping (_ auth: Bool, _ newUser: User) -> Void) {
         var jsonAuth = false
         
-    
         let url = URL(string: "https://joseph-frank.com/api/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -91,7 +85,6 @@ class QueryService {
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     data, options: [])
-                //print("jsonResponse is \(jsonResponse)")
                 guard let jsonArray = jsonResponse as? [String: Any] else {
                     return
                 }
@@ -104,8 +97,6 @@ class QueryService {
                 if (jsonAuth == true) {
                     let defaults = UserDefaults.standard
                     defaults.set(jsonToken, forKey: "token")
-                    
-                    print(currentUser)
                 }
                 
                 DispatchQueue.main.async{
@@ -115,36 +106,13 @@ class QueryService {
             } catch let parsingError {
                 print("Error", parsingError)
             }
-            
-//            let responseString = String(data: data, encoding: .utf8)
-//
-//            do {
-//                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-//                jsonAuth = jsonResponse!["auth"] as! Bool
-//                let jsonToken = jsonResponse!["token"] as! String
-//
-//                //if user is validated, assign token
-//                if (jsonAuth == true) {
-//                    let defaults = UserDefaults.standard
-//                    defaults.set(jsonToken, forKey: "token")
-//                }
-//                print("responseString = \(responseString)")
-//                print(jsonAuth)
-//                DispatchQueue.main.async{
-//                    completion(jsonAuth)
-//                }
-//            } catch {
-//                return
-//            }
         }
         task.resume()
     }
     
     static func createPerson(firstname: String, lastname: String, image: String, completion: @escaping (_ success: Bool) -> Void){
-        //var didCreate = false
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
-        print(token)
         
         let url = URL(string: "https://joseph-frank.com/api/friends")!
         var request = URLRequest(url: url)
@@ -171,17 +139,13 @@ class QueryService {
                 return
             }
             
-            
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
             DispatchQueue.main.async{
                 completion(true)
             }
-            // didCreate = true
         }
         task.resume()
         
-        //print(didCreate)
         return
     }
     
@@ -212,7 +176,6 @@ class QueryService {
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     data, options: [])
-                //print("jsonResponse is \(jsonResponse)")
                 guard let jsonArray = jsonResponse as? [[String: Any]] else {
                     return
                 }
@@ -232,7 +195,6 @@ class QueryService {
     }
     
     static func getFriendImage(friendID: Int, completion: @escaping (_ base64Image: String) -> Void){
-        //var didCreate = false
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
         print("friend ID is \(friendID)")
@@ -241,12 +203,12 @@ class QueryService {
         url.queryItems = [
             URLQueryItem(name: "friendId", value: "\(friendID)")
         ]
-       
+        
         var request = URLRequest(url: url.url!)
         request.httpMethod = "GET"
         request.setValue("text/html; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue(token, forHTTPHeaderField: "x-access-token")
-  
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let response = response as? HTTPURLResponse,
                 error == nil else {
@@ -261,7 +223,6 @@ class QueryService {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
             DispatchQueue.main.async{
                 completion(responseString!)
             }
@@ -319,10 +280,8 @@ class QueryService {
     }
     
     static func getEventImage(eventID: Int, completion: @escaping (_ base64Image: String) -> Void){
-        //var didCreate = false
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
-        print("friend ID is \(eventID)")
         
         var url = URLComponents(string: "https://joseph-frank.com/api/images")!
         url.queryItems = [
@@ -348,7 +307,6 @@ class QueryService {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
             DispatchQueue.main.async{
                 completion(responseString!)
             }
@@ -371,7 +329,6 @@ class QueryService {
         request.setValue(token, forHTTPHeaderField: "x-access-token")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            //print("beginning of task")
             guard let data = data, let response = response as? HTTPURLResponse,
                 error == nil else {
                     print("error", error ?? "unknown error")
@@ -392,9 +349,6 @@ class QueryService {
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
                 jsonAuth = jsonResponse!["auth"] as! Bool
-            
-                print("responseString = \(responseString)")
-                //print(jsonAuth)
                 DispatchQueue.main.async{
                     completion(jsonAuth)
                 }
@@ -437,7 +391,6 @@ class QueryService {
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     data, options: [])
-                print("jsonResponse is \(jsonResponse)")
                 guard let jsonArray = jsonResponse as? [[String: Any]] else {
                     return
                 }
@@ -457,10 +410,6 @@ class QueryService {
     }
     
     static func deleteFriend(friendID: Int, completion: @escaping (_ success: Bool) -> Void) {
-        var jsonAuth = false
-        
-        //let url = URL(string: "https://joseph-frank.com/api/friends")!
-        
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
         
@@ -491,26 +440,7 @@ class QueryService {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print(responseString)
             completion(true)
-//            do {
-//                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-//                jsonAuth = jsonResponse!["auth"] as! Bool
-//                let jsonToken = jsonResponse!["token"] as! String
-//
-//                //if user is validated, assign token
-//                if (jsonAuth == true) {
-//                    let defaults = UserDefaults.standard
-//                    defaults.set(jsonToken, forKey: "token")
-//                }
-//                print("responseString = \(responseString)")
-//                print(jsonAuth)
-//                DispatchQueue.main.async{
-//                    completion(jsonAuth)
-//                }
-//            } catch {
-//                return
-//            }
         }
         task.resume()
     }

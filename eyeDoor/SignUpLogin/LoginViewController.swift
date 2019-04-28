@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -23,7 +23,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.tag = 0
         loginButton.isEnabled = false
         [emailTextField, passwordTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
-        // Do any additional setup after loading the view.
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -41,12 +40,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginAction(_ sender: Any) {
         //login user
-        print("logging in user")
         
         QueryService.loginUser(email: emailTextField.text!, password: passwordTextField.text!, completion: {(auth: Bool, newUser: User)  -> Void in
-            //print("auth is \(auth)")
             if(auth == true){
-                
                 
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let context = appDelegate.persistentContainer.viewContext
@@ -71,13 +67,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             } else {
                 let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-
+                
                 alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
             }
-
+            
         })
-        //self.performSegue(withIdentifier: "loginToHome", sender: self)
     }
     
     @objc func editingChanged(_ textField: UITextField) {
@@ -98,14 +93,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

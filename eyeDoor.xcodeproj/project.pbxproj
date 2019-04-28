@@ -28,7 +28,6 @@
 		FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2A22025E200020AA7D /* Gradient.swift */; };
 		FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */; };
 		FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */; };
-		FFFCFFB42234AB7F004E94A5 /* (Depricated)MyPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB32234AB7F004E94A5 /* (Depricated)MyPeopleViewController.swift */; };
 		FFFCFFB62234AD67004E94A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB52234AD67004E94A5 /* UIImageView.swift */; };
 		FFFCFFB8223FDC0E004E94A5 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */; };
 		FFFCFFBA223FDCAC004E94A5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB9223FDCAC004E94A5 /* Person.swift */; };
@@ -62,7 +61,6 @@
 		FFAA2B2A22025E200020AA7D /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		FFFCFFB32234AB7F004E94A5 /* (Depricated)MyPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "(Depricated)MyPeopleViewController.swift"; sourceTree = "<group>"; };
 		FFFCFFB52234AD67004E94A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		FFFCFFB9223FDCAC004E94A5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -102,10 +100,10 @@
 		FF0A376A2241363F001C7B1E /* MyPeople */ = {
 			isa = PBXGroup;
 			children = (
+				FFC6F6E02276198400DB9C19 /* Detail */,
 				FF0A376F22413826001C7B1E /* MyPeopleCollectionViewCell.swift */,
 				FF0A3771224138F3001C7B1E /* MyPeopleCollectionViewController.swift */,
 				FFFCFFBB223FE079004E94A5 /* NewPersonViewController.swift */,
-				FFFCFFB32234AB7F004E94A5 /* (Depricated)MyPeopleViewController.swift */,
 				FFFCFFB9223FDCAC004E94A5 /* Person.swift */,
 			);
 			path = MyPeople;
@@ -143,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */,
+				FF0F43C52270AEFC009B7DDD /* User.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -169,6 +168,7 @@
 		FF74124D2202546000826CF7 /* eyeDoor */ = {
 			isa = PBXGroup;
 			children = (
+				FFC6F6E1227619D400DB9C19 /* Home */,
 				FF0A376E224136E7001C7B1E /* Account */,
 				FF0A376D224136CC001C7B1E /* Services */,
 				FF0A376C224136A7001C7B1E /* UIElements */,
@@ -180,15 +180,28 @@
 				FF7412572202546200826CF7 /* LaunchScreen.storyboard */,
 				FF74125A2202546200826CF7 /* Info.plist */,
 				FFAA2B282202592F0020AA7D /* MenuViewController.swift */,
-				FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */,
 				FF5CE0A0221C565000DFA386 /* StartViewController.swift */,
-				FF2B06A62252EFF600EAD4ED /* EventStruct.swift */,
-				FF4BFB6B225300D900DEC25E /* DetailViewController.swift */,
-				FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */,
-				FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */,
-				FF0F43C52270AEFC009B7DDD /* User.swift */,
 			);
 			path = eyeDoor;
+			sourceTree = "<group>";
+		};
+		FFC6F6E02276198400DB9C19 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FF4BFB6B225300D900DEC25E /* DetailViewController.swift */,
+				FF0F43C3226F54EE009B7DDD /* FriendEventTableViewCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		FFC6F6E1227619D400DB9C19 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */,
+				FF4BFB6D2253A17A00DEC25E /* EventTableViewCell.swift */,
+				FF2B06A62252EFF600EAD4ED /* EventStruct.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,7 +333,6 @@
 				FF5CE0A5221C5D4100DFA386 /* SignUpViewController.swift in Sources */,
 				FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */,
 				FF5CE0A7221C907900DFA386 /* QueryService.swift in Sources */,
-				FFFCFFB42234AB7F004E94A5 /* (Depricated)MyPeopleViewController.swift in Sources */,
 				FFFCFFB62234AD67004E94A5 /* UIImageView.swift in Sources */,
 				FF74124F2202546000826CF7 /* AppDelegate.swift in Sources */,
 				FF4BFB6E2253A17A00DEC25E /* EventTableViewCell.swift in Sources */,

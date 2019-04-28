@@ -23,7 +23,6 @@ struct User {
         self.lastName = dictionary["lastname"] as! String
         self.email = dictionary["email"] as! String
         self.deviceToken = dictionary["deviceToken"] as! String
-        //self.image = dictionary["completed"] as? Bool ?? false
     }
     
     init(){

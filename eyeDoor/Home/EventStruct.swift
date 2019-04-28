@@ -17,8 +17,6 @@ struct EventStruct {
     init(_ dictionary: [String: Any]) {
         self.eventID = dictionary["EventID"] as! Int
         self.timeSent = dictionary["Timesent"] as! String
-        //self.personID = dictionary["FriendID"] as! Int
-        //self.image = dictionary["completed"] as? Bool ?? false
     }
     
     init(eventID: Int, timeSent: String, imageString: NSData?){
@@ -28,7 +26,6 @@ struct EventStruct {
         self.imageString = imageString
         
         if (imageString != nil){
-            //            let dataDecoded:NSData = NSData(base64Encoded: imageString!, options: NSData.Base64DecodingOptions(rawValue: 0))!
             let decodedimage:UIImage = UIImage(data: imageString! as Data) ?? UIImage(named: "Person")!
             self.image = decodedimage
         }

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class SignUpViewController: UIViewController,UITextFieldDelegate  {
-
+    
     @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -27,7 +27,6 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
         firstnameTextField.tag = 0
         signupButton.isEnabled = false
         [firstnameTextField, lastnameTextField, emailTextField, passwordTextField, confirmPassTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
-        // Do any additional setup after loading the view.
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -53,14 +52,10 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //create user
-            print("creating user")
             QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, completion: {(auth: Bool) -> Void in
                 
                 if (auth == true) {
-                    print("logging user in")
-                
                     QueryService.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, completion: {(auth: Bool, newUser: User) -> Void in
-                        print("auth is \(auth)")
                         if(auth == true){
                             
                             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -97,15 +92,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
                     self.present(alertController, animated: true, completion: nil)
                 }
             })
-                
+            
         }
     }
-        
-        
+    
+    
     
     
     @objc func editingChanged(_ textField: UITextField) {
-        //print(textField)
         if textField.text!.count == 1 {
             if textField.text!.first == " " {
                 textField.text = ""
@@ -119,24 +113,10 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
             let password = passwordTextField.text, !password.isEmpty,
             let confirmPass = confirmPassTextField.text, !confirmPass.isEmpty
             else {
-                //print("signup not enabled")
                 signupButton.isEnabled = false
                 return
         }
-        //print("signup enabled")
         signupButton.isEnabled = true
         
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

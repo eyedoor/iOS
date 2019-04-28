@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     
     @IBOutlet weak var eventsTableView: UITableView!
     
@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Event", in: context)
+        _ = NSEntityDescription.entity(forEntityName: "Event", in: context)
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Event")
         //request.predicate = NSPredicate(format: "age = %@", "12")
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-                var newEvent = EventStruct(eventID: data.value(forKey: "eventID") as! Int, timeSent: data.value(forKey: "date") as! String, imageString: data.value(forKey: "image") as? NSData)
+                let newEvent = EventStruct(eventID: data.value(forKey: "eventID") as! Int, timeSent: data.value(forKey: "date") as! String, imageString: data.value(forKey: "image") as? NSData)
                 if !self.events.contains(where: {$0.eventID == newEvent.eventID}){
                     self.events.append(newEvent)
                 }
@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.eventsTableView.addSubview(self.refreshControl)
@@ -104,33 +104,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
                             
                             let decodedimage:UIImage = UIImage(data: dataDecoded as Data) ?? UIImage(named: "Person")!
-                                self.events[index].image = decodedimage
-                                
-                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                                let context = appDelegate.persistentContainer.viewContext
-                                let entity = NSEntityDescription.entity(forEntityName: "Event", in: context)
-                                
-                                let request = NSFetchRequest<NSManagedObject>(entityName: "Event")
-                                request.predicate = NSPredicate(format: "eventID = %d", event.eventID)
-                                
-                                var results: [NSManagedObject] = []
-                                
-                                do {
-                                    results = try context.fetch(request)
-                                    //results as! [NSManagedObject]
-                                    for data in results as! [NSManagedObject]{
-                                        data.setValue(dataDecoded, forKey: "image")
-                                    }
-                                    try context.save()
+                            self.events[index].image = decodedimage
+                            
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            let context = appDelegate.persistentContainer.viewContext
+                            _ = NSEntityDescription.entity(forEntityName: "Event", in: context)
+                            
+                            let request = NSFetchRequest<NSManagedObject>(entityName: "Event")
+                            request.predicate = NSPredicate(format: "eventID = %d", event.eventID)
+                            
+                            var results: [NSManagedObject] = []
+                            
+                            do {
+                                results = try context.fetch(request)
+                                for data in results {
+                                    data.setValue(dataDecoded, forKey: "image")
                                 }
-                                catch {
-                                    print("error executing fetch request: \(error)")
-                                }
-                                
-                                self.eventsTableView.reloadData()
+                                try context.save()
+                            }
+                            catch {
+                                print("error executing fetch request: \(error)")
+                            }
+                            
+                            self.eventsTableView.reloadData()
                             self.eventImageView.image = self.events[0].image
-                                    let indexPath = IndexPath.init(row: 0, section: 0)
-                                    self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
+                            let indexPath = IndexPath.init(row: 0, section: 0)
+                            self.eventsTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
                             
                         }
                     }
@@ -208,21 +207,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var currentEventID = events[indexPath.row].eventID
-        print(currentEventID)
+        let currentEventID = events[indexPath.row].eventID
         
         self.eventImageView.image = events[indexPath.row].image
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

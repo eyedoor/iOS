@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class AccountViewController: UIViewController {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
@@ -27,12 +27,12 @@ class AccountViewController: UIViewController {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
                 nameLabel.text = "\(data.value(forKey: "firstname") as! String)\(data.value(forKey: "lastname") as! String)"
-                emailLabel.text = data.value(forKey: "email") as! String
+                emailLabel.text = (data.value(forKey: "email") as! String)
             }
         } catch {
             print("Failed")
         }
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -45,31 +45,6 @@ class AccountViewController: UIViewController {
         let defaults = UserDefaults.standard
         defaults.set(false, forKey: "LoggedIn")
         defaults.set(nil, forKey: "token")
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrentUser")
-//        let request2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Friend")
-//
-//        request.returnsObjectsAsFaults = false
-//        do {
-//            let result = try context.fetch(request)
-//            let result2 = try context.fetch(request)
-//            for data in result as! [NSManagedObject] {
-//               context.delete(data)
-//            }
-//            for data in result2 as! [NSManagedObject] {
-//                context.delete(data)
-//            }
-//            //log user out
-//            //if successful, then go back to start
-//            let defaults = UserDefaults.standard
-//            defaults.set(false, forKey: "LoggedIn")
-//            defaults.set(nil, forKey: "token")
-//        } catch {
-//            print("Failed")
-//        }
-        //self.performSegue(withIdentifier: "accountToStart", sender: self)
     }
     
     func deleteAllData(entity: String)
@@ -92,14 +67,4 @@ class AccountViewController: UIViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

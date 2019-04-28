@@ -9,7 +9,7 @@
 import UIKit
 
 class NewPersonViewController: UIViewController {
-
+    
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -22,14 +22,13 @@ class NewPersonViewController: UIViewController {
         
         saveButton.isEnabled = false
         [firstNameTextField, lastNameTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
-
+        
         personImageView.roundedImage()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func showImagePicker(_ sender: UIButton) {
-         self.imagePicker.present(from: sender)
+        self.imagePicker.present(from: sender)
     }
     
     @IBAction func saveButtonAction(_ sender: Any) {
@@ -40,9 +39,7 @@ class NewPersonViewController: UIViewController {
         
         
         let imageData = reducedImage!.pngData()
-        //print(imageData)
         let strBase64 = imageData?.base64EncodedString()
-        //print(strBase64)
         QueryService.createPerson(firstname: firstNameTextField.text!, lastname: lastNameTextField.text!, image: strBase64!, completion: {(success: Bool) -> Void in
             print("success is \(success)")
             if(success == true){
@@ -50,27 +47,17 @@ class NewPersonViewController: UIViewController {
             } else {
                 let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-
+                
                 alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
             }
-
+            
         })
-
-        //print(strBase64)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         
-        switch identifier {
-            
-        case "cancel":
-            print("cancel bar button item tapped")
-            
-        default:
-            print("unexpected segue identifier")
-        }
     }
     
     @objc func editingChanged(_ textField: UITextField) {
@@ -91,7 +78,7 @@ class NewPersonViewController: UIViewController {
         saveButton.isEnabled = true
         
     }
-
+    
 }
 
 

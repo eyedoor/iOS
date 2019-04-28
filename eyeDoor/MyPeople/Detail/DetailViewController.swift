@@ -18,32 +18,23 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var friendID: Int = -1
     
     var events = [EventStruct]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "\(firstName) \(lastName)"
         friendImageView.roundedImage()
-        print("friendID =  \(self.friendID)")
         
         QueryService.getFriendEvents(friendID: self.friendID, completion: {(events) in
-            //print("friends list is \(friends)")
-            //self.friends = friends as! [Person]
             DispatchQueue.main.async {
                 self.events = events as! [EventStruct]
                 self.eventTableView.reloadData()
-                print(events)
                 if (events.count > 0){
                     QueryService.getEventImage(eventID: self.events[0].eventID) { (base64Image) in
-                        //print("friends list is \(friends)")
-                        //self.friends = friends as! [Person]
                         DispatchQueue.main.async {
-                            //self.events = events as! [Event]
-                            //self.eventsTableView.reloadData()
                             let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
                             let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                             self.friendImageView.image = decodedimage
-                            //self.eventsTableView.reloadData()
                             let indexPath = IndexPath.init(row: 0, section: 0)
                             self.eventTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.top)
                         }
@@ -53,19 +44,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
         })
-            
-            
-        
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func deleteFriend(_ sender: Any) {
         let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to permanently delete your friend?", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { action in
             QueryService.deleteFriend(friendID: self.friendID, completion: {(success) in
-                //print("friends list is \(friends)")
-                //self.friends = friends as! [Person]
                 DispatchQueue.main.async {
                     if (success){
                         //go back
@@ -87,10 +71,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         alertController.addAction(ok)
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
-        
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,7 +91,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.selectedBackgroundView = backgroundView
         
-        cell.dateTimeLabel.text = dateFormatter.string(from: date!)//events[indexPath.row].timeSent
+        cell.dateTimeLabel.text = dateFormatter.string(from: date!)
         
         return cell
     }
@@ -121,36 +101,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("selected")
-        var currentEventID = events[indexPath.row].eventID
-        //print(currentEventID)
+        let currentEventID = events[indexPath.row].eventID
         QueryService.getEventImage(eventID: currentEventID) { (base64Image) in
-            //print("friends list is \(friends)")
-            //self.friends = friends as! [Person]
             DispatchQueue.main.async {
-                //self.events = events as! [Event]
-                //self.eventsTableView.reloadData()
-                
                 let dataDecoded:NSData = NSData(base64Encoded: base64Image, options: NSData.Base64DecodingOptions(rawValue: 0))!
                 if let decodedimage:UIImage = UIImage(data: dataDecoded as Data) {
                     self.friendImageView.image = decodedimage
                 } else {
                     self.friendImageView.image = nil
                 }
-                //self.eventImageView.image = decodedimage
-                //self.eventsTableView.reloadData()
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
