@@ -16,6 +16,7 @@ class NewPersonViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var imagePicker: ImagePicker!
+    var imageSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,6 @@ class NewPersonViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else { return }
         
     }
     
@@ -67,15 +67,16 @@ class NewPersonViewController: UIViewController {
                 return
             }
         }
-        guard
-            let firstName = firstNameTextField.text, !firstName.isEmpty,
-            let lastName = lastNameTextField.text, !lastName.isEmpty,
-            let image = personImageView.image, image != nil
-            else {
-                saveButton.isEnabled = false
-                return
+        if (imageSelected == true){
+            guard
+                let firstName = firstNameTextField.text, !firstName.isEmpty,
+                let lastName = lastNameTextField.text, !lastName.isEmpty
+                else {
+                    saveButton.isEnabled = false
+                    return
+            }
+            saveButton.isEnabled = true
         }
-        saveButton.isEnabled = true
         
     }
     
@@ -87,6 +88,7 @@ extension NewPersonViewController: ImagePickerDelegate {
     
     func didSelect(image: UIImage?) {
         self.personImageView.image = image
+        imageSelected = true
         personImageView.contentMode = UIView.ContentMode.scaleAspectFill
     }
 }

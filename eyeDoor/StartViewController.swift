@@ -8,6 +8,7 @@
 
 import UIKit
 import LocalAuthentication
+import CoreData
 
 class StartViewController: UIViewController {
     
@@ -16,7 +17,6 @@ class StartViewController: UIViewController {
         let defaults = UserDefaults.standard
         let isLoggedIn = defaults.bool(forKey: "LoggedIn")
         if (isLoggedIn == true){
-            let token = defaults.string(forKey: "token")
             //call api for token verification
             QueryService.verifyUser(completion: {(auth: Bool) -> Void in
                 if(auth == true){
@@ -26,6 +26,15 @@ class StartViewController: UIViewController {
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     
                     alertController.addAction(defaultAction)
+                    
+                    self.deleteAllData(entity: "CurrentUser")
+                    self.deleteAllData(entity: "Friend")
+                    self.deleteAllData(entity: "Event")
+                    
+                    let defaults = UserDefaults.standard
+                    defaults.set(false, forKey: "LoggedIn")
+                    defaults.set(nil, forKey: "token")
+                    
                     self.present(alertController, animated: true, completion: nil)
                 }
                 
@@ -55,6 +64,26 @@ class StartViewController: UIViewController {
                 }
             } else {
             }
+        }
+    }
+    
+    func deleteAllData(entity: String)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
         }
     }
     

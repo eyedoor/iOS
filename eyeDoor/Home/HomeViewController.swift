@@ -207,8 +207,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentEventID = events[indexPath.row].eventID
-        
         self.eventImageView.image = events[indexPath.row].image
     }
     

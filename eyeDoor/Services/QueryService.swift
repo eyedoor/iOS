@@ -26,7 +26,7 @@ class QueryService {
         request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, let response = response as? HTTPURLResponse,
+            guard let _ = data, let response = response as? HTTPURLResponse,
                 error == nil else {
                     print("error", error ?? "unknown error")
                     return
@@ -40,9 +40,6 @@ class QueryService {
                 }
                 return
             }
-            
-            
-            let responseString = String(data: data, encoding: .utf8)
             DispatchQueue.main.async{
                 completion(true)
             }
@@ -124,7 +121,7 @@ class QueryService {
         request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, let response = response as? HTTPURLResponse,
+            guard let _ = data, let response = response as? HTTPURLResponse,
                 error == nil else {
                     print("error", error ?? "unknown error")
                     return
@@ -138,8 +135,6 @@ class QueryService {
                 }
                 return
             }
-            
-            let responseString = String(data: data, encoding: .utf8)
             DispatchQueue.main.async{
                 completion(true)
             }
@@ -344,8 +339,6 @@ class QueryService {
                 return
             }
             
-            let responseString = String(data: data, encoding: .utf8)
-            
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
                 jsonAuth = jsonResponse!["auth"] as! Bool
@@ -424,7 +417,7 @@ class QueryService {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             print("beginning of task")
-            guard let data = data, let response = response as? HTTPURLResponse,
+            guard let _ = data, let response = response as? HTTPURLResponse,
                 error == nil else {
                     print("error", error ?? "unknown error")
                     return
@@ -438,8 +431,6 @@ class QueryService {
                 }
                 return
             }
-            
-            let responseString = String(data: data, encoding: .utf8)
             completion(true)
         }
         task.resume()
