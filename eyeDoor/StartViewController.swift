@@ -12,8 +12,12 @@ import CoreData
 
 class StartViewController: UIViewController {
     
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginButton.isEnabled = false
+        signUpButton.isEnabled = false
         let defaults = UserDefaults.standard
         let isLoggedIn = defaults.bool(forKey: "LoggedIn")
         if (isLoggedIn == true){
@@ -40,6 +44,9 @@ class StartViewController: UIViewController {
                 
             })
             
+        } else {
+            loginButton.isEnabled = true
+            signUpButton.isEnabled = true
         }
         
     }
@@ -59,6 +66,7 @@ class StartViewController: UIViewController {
                         if success {
                             self.performSegue(withIdentifier: "startToHome", sender: self)
                         } else {
+                            self.loginButton.isEnabled = true
                         }
                     }
                 }

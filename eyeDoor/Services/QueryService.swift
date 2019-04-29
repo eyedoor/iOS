@@ -11,7 +11,7 @@ import CoreData
 
 class QueryService {
     
-    static func createUser(email: String, password: String, firstname: String, lastname: String, completion: @escaping (_ auth: Bool) -> Void){
+    static func createUser(email: String, password: String, firstname: String, lastname: String, phoneNumber: String, completion: @escaping (_ auth: Bool) -> Void){
         let url = URL(string: "https://joseph-frank.com/api/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -19,6 +19,7 @@ class QueryService {
         let json: [String:Any] = [
             "email" : email,
             "password" : password,
+            "phone" : phoneNumber,
             "firstname" : firstname,
             "lastname" : lastname
         ]

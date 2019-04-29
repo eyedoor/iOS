@@ -679,6 +679,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="t97-ng-2ZD"/>
                     <connections>
+                        <outlet property="loginButton" destination="zfB-1a-dxP" id="Qfn-dr-O9g"/>
+                        <outlet property="signUpButton" destination="RmW-dO-iQr" id="BCH-Hz-AxI"/>
                         <segue destination="ASX-U4-mug" kind="presentation" identifier="startToHome" id="hEX-81-hxS"/>
                     </connections>
                 </viewController>
@@ -995,7 +997,7 @@
         <image name="icons8-menu-75" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OMQ-8D-3oJ"/>
+        <segue reference="hEX-81-hxS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

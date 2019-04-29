@@ -64,7 +64,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //create user
-            QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, completion: {(auth: Bool) -> Void in
+            QueryService.createUser(email: emailTextField.text!, password: passwordTextField.text!, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, phoneNumber: getPhoneNumber(), completion: {(auth: Bool) -> Void in
                 
                 if (auth == true) {
                     QueryService.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, completion: {(auth: Bool, newUser: User) -> Void in
