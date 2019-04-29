@@ -16,6 +16,15 @@ class StartViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkLogin()
+    }
+    
+    func checkLogin(){
         loginButton.isEnabled = false
         signUpButton.isEnabled = false
         let defaults = UserDefaults.standard
@@ -48,9 +57,18 @@ class StartViewController: UIViewController {
             loginButton.isEnabled = true
             signUpButton.isEnabled = true
         }
-        
     }
     
+    @IBAction func loginFaceID(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let isLoggedIn = defaults.bool(forKey: "LoggedIn")
+        if (isLoggedIn == true){
+            checkLogin()
+        } else {
+            loginButton.isEnabled = true
+            signUpButton.isEnabled = true
+        }
+    }
     
     func validateFace(){
         let myContext = LAContext()

@@ -644,6 +644,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="loginFaceID:" destination="UC9-tU-uuM" eventType="touchUpInside" id="tJF-C9-s49"/>
                                             <segue destination="6oK-bK-aa9" kind="show" id="PHL-WZ-aXz"/>
                                         </connections>
                                     </button>
