@@ -14,6 +14,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
     @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
@@ -24,12 +25,13 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
         firstnameTextField.delegate = self
         lastnameTextField.delegate = self
         emailTextField.delegate = self
+        phoneNumberTextField.delegate = self
         passwordTextField.delegate = self
         confirmPassTextField.delegate = self
         confirmPassTextField.keyboardType = UIKeyboardType.alphabet
         //firstnameTextField.tag = 0
         signupButton.isEnabled = false
-        [firstnameTextField, lastnameTextField, emailTextField, passwordTextField, confirmPassTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
+        [firstnameTextField, lastnameTextField, emailTextField, phoneNumberTextField, passwordTextField, confirmPassTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -48,8 +50,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
     
     @IBAction func signupAction(_ sender: Any) {
         
+        if (getPhoneNumber() == ""){
+            let alertController = UIAlertController(title: "Phone Number Incorrect", message: "Please enter a valid phone number", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
         //if passwords dont match, send alert to user
-        if passwordTextField.text != confirmPassTextField.text {
+        else if passwordTextField.text != confirmPassTextField.text {
             let alertController = UIAlertController(title: "Password Incorrect", message: "Please re-type password", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
@@ -114,6 +122,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
             let first = firstnameTextField.text, !first.isEmpty,
             let last = lastnameTextField.text, !last.isEmpty,
             let email = emailTextField.text, !email.isEmpty,
+            let phone = phoneNumberTextField.text, !phone.isEmpty,
             let password = passwordTextField.text, !password.isEmpty,
             let confirmPass = confirmPassTextField.text, !confirmPass.isEmpty
             else {
@@ -122,5 +131,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate  {
         }
         signupButton.isEnabled = true
         
+    }
+    
+    func getPhoneNumber() -> String{
+        var number = "+1"
+        let result = (phoneNumberTextField.text?.filter("01234567890.".contains))!
+        if(result.count != 10){
+            print("Error: please enter a correct phone number")
+            return ""
+        } else {
+            number.append(result)
+        }
+        return number
     }
 }
