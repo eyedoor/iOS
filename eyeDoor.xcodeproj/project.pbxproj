@@ -28,12 +28,23 @@
 		FFAA2B2B22025E200020AA7D /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2A22025E200020AA7D /* Gradient.swift */; };
 		FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */; };
 		FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */; };
+		FFC6F6E92278B05C00DB9C19 /* eyeDoorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6F6E82278B05C00DB9C19 /* eyeDoorUITests.swift */; };
 		FFFCFFB62234AD67004E94A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB52234AD67004E94A5 /* UIImageView.swift */; };
 		FFFCFFB8223FDC0E004E94A5 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */; };
 		FFFCFFBA223FDCAC004E94A5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB9223FDCAC004E94A5 /* Person.swift */; };
 		FFFCFFBC223FE079004E94A5 /* NewPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFBB223FE079004E94A5 /* NewPersonViewController.swift */; };
 		FFFCFFBE223FE0D5004E94A5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFBD223FE0D5004E94A5 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FFC6F6EB2278B05C00DB9C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF7412432202546000826CF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF74124A2202546000826CF7;
+			remoteInfo = eyeDoor;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4601B442C2F996E74F1CB4A5 /* Pods-eyeDoor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eyeDoor.release.xcconfig"; path = "Pods/Target Support Files/Pods-eyeDoor/Pods-eyeDoor.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,6 +72,9 @@
 		FFAA2B2A22025E200020AA7D /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		FFC6F6E62278B05B00DB9C19 /* eyeDoorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eyeDoorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFC6F6E82278B05C00DB9C19 /* eyeDoorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eyeDoorUITests.swift; sourceTree = "<group>"; };
+		FFC6F6EA2278B05C00DB9C19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFFCFFB52234AD67004E94A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		FFFCFFB9223FDCAC004E94A5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -74,6 +88,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE090B3F1CD56929F293CAAF /* Pods_eyeDoor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFC6F6E32278B05B00DB9C19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +172,7 @@
 			children = (
 				FF0F43C72270B5DB009B7DDD /* Model.xcdatamodeld */,
 				FF74124D2202546000826CF7 /* eyeDoor */,
+				FFC6F6E72278B05C00DB9C19 /* eyeDoorUITests */,
 				FF74124C2202546000826CF7 /* Products */,
 				0D5406DEB98167477677F363 /* Pods */,
 				1B06D02D1F97362EFB270AB3 /* Frameworks */,
@@ -161,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				FF74124B2202546000826CF7 /* eyeDoor.app */,
+				FFC6F6E62278B05B00DB9C19 /* eyeDoorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +227,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		FFC6F6E72278B05C00DB9C19 /* eyeDoorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FFC6F6E82278B05C00DB9C19 /* eyeDoorUITests.swift */,
+				FFC6F6EA2278B05C00DB9C19 /* Info.plist */,
+			);
+			path = eyeDoorUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,6 +258,24 @@
 			productReference = FF74124B2202546000826CF7 /* eyeDoor.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FFC6F6E52278B05B00DB9C19 /* eyeDoorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFC6F6EF2278B05C00DB9C19 /* Build configuration list for PBXNativeTarget "eyeDoorUITests" */;
+			buildPhases = (
+				FFC6F6E22278B05B00DB9C19 /* Sources */,
+				FFC6F6E32278B05B00DB9C19 /* Frameworks */,
+				FFC6F6E42278B05B00DB9C19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFC6F6EC2278B05C00DB9C19 /* PBXTargetDependency */,
+			);
+			name = eyeDoorUITests;
+			productName = eyeDoorUITests;
+			productReference = FFC6F6E62278B05B00DB9C19 /* eyeDoorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -235,13 +285,17 @@
 				KnownAssetTags = (
 					2,
 				);
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Nathan Schlechte";
 				TargetAttributes = {
 					FF74124A2202546000826CF7 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+					};
+					FFC6F6E52278B05B00DB9C19 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = FF74124A2202546000826CF7;
 					};
 				};
 			};
@@ -259,6 +313,7 @@
 			projectRoot = "";
 			targets = (
 				FF74124A2202546000826CF7 /* eyeDoor */,
+				FFC6F6E52278B05B00DB9C19 /* eyeDoorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,6 +326,13 @@
 				FF7412592202546200826CF7 /* LaunchScreen.storyboard in Resources */,
 				FF7412562202546200826CF7 /* Assets.xcassets in Resources */,
 				FF7412542202546000826CF7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFC6F6E42278B05B00DB9C19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +415,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFC6F6E22278B05B00DB9C19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFC6F6E92278B05C00DB9C19 /* eyeDoorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFC6F6EC2278B05C00DB9C19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF74124A2202546000826CF7 /* eyeDoor */;
+			targetProxy = FFC6F6EB2278B05C00DB9C19 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FF7412522202546000826CF7 /* Main.storyboard */ = {
@@ -529,6 +607,46 @@
 			};
 			name = Release;
 		};
+		FFC6F6ED2278B05C00DB9C19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AEMX3T6C2M;
+				INFOPLIST_FILE = eyeDoorUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NathanSchlechte.eyeDoorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = eyeDoor;
+			};
+			name = Debug;
+		};
+		FFC6F6EE2278B05C00DB9C19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AEMX3T6C2M;
+				INFOPLIST_FILE = eyeDoorUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NathanSchlechte.eyeDoorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = eyeDoor;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -546,6 +664,15 @@
 			buildConfigurations = (
 				FF74125E2202546200826CF7 /* Debug */,
 				FF74125F2202546200826CF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFC6F6EF2278B05C00DB9C19 /* Build configuration list for PBXNativeTarget "eyeDoorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFC6F6ED2278B05C00DB9C19 /* Debug */,
+				FFC6F6EE2278B05C00DB9C19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
