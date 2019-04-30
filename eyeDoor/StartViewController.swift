@@ -90,6 +90,9 @@ class StartViewController: UIViewController {
                 }
             } else {
             }
+        } else {
+            self.loginButton.isEnabled = true
+            self.signUpButton.isEnabled = true
         }
     }
     
