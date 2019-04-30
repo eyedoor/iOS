@@ -492,23 +492,42 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai5-no-csj">
-                                                            <rect key="frame" x="8" y="8" width="398" height="83.666666666666671"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventMessage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcp-tt-Yeq">
+                                                            <rect key="frame" x="99" y="33" width="295" height="33"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HZ9-np-cKt">
+                                                            <rect key="frame" x="8" y="8" width="83.666666666666671" height="83.666666666666671"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="83.670000000000002" id="Y3t-Tf-VoM"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai5-no-csj">
+                                                            <rect key="frame" x="115.66666666666666" y="60.000000000000007" width="262.33333333333337" height="23.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="Ai5-no-csj" secondAttribute="trailing" id="8Vx-mP-yMq"/>
-                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="bottom" secondItem="n8T-0G-Zbn" secondAttribute="bottomMargin" id="CO3-rq-qqK"/>
-                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="top" secondItem="n8T-0G-Zbn" secondAttribute="topMargin" id="KkL-Xx-skM"/>
-                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="leading" secondItem="n8T-0G-Zbn" secondAttribute="leadingMargin" id="M4z-2J-w6K"/>
+                                                        <constraint firstItem="Dcp-tt-Yeq" firstAttribute="leading" secondItem="HZ9-np-cKt" secondAttribute="trailing" constant="7.3333333333333286" id="4Nm-ee-mKl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Dcp-tt-Yeq" secondAttribute="trailing" constant="20" id="CtU-Vv-l5j"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="HZ9-np-cKt" secondAttribute="bottom" id="DwE-MA-jHw"/>
+                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="top" secondItem="Dcp-tt-Yeq" secondAttribute="bottom" constant="-6" id="GbN-DB-xrn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ai5-no-csj" secondAttribute="trailing" constant="36" id="jNH-Mh-fBJ"/>
+                                                        <constraint firstItem="HZ9-np-cKt" firstAttribute="top" secondItem="n8T-0G-Zbn" secondAttribute="topMargin" id="n1z-ZP-Eed"/>
+                                                        <constraint firstItem="Ai5-no-csj" firstAttribute="leading" secondItem="HZ9-np-cKt" secondAttribute="trailing" constant="24" id="njN-NK-BoI"/>
+                                                        <constraint firstItem="HZ9-np-cKt" firstAttribute="leading" secondItem="n8T-0G-Zbn" secondAttribute="leadingMargin" id="te0-CX-9mO"/>
+                                                        <constraint firstItem="Dcp-tt-Yeq" firstAttribute="top" secondItem="n8T-0G-Zbn" secondAttribute="top" constant="33" id="tmq-la-6l3"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="eventDateTimeLabel" destination="Ai5-no-csj" id="q1i-Jx-B0A"/>
+                                                    <outlet property="eventImageView" destination="HZ9-np-cKt" id="Y3p-cc-6ZX"/>
+                                                    <outlet property="eventMessageLabel" destination="Dcp-tt-Yeq" id="nmO-eB-1q4"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -998,7 +1017,7 @@
         <image name="icons8-menu-75" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hEX-81-hxS"/>
+        <segue reference="aQU-9s-QYb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -13,15 +13,18 @@ struct EventStruct {
     var timeSent: String
     var image: UIImage!
     var imageString: NSData!
+    var eventMessage: String
     
     init(_ dictionary: [String: Any]) {
         self.eventID = dictionary["EventID"] as! Int
         self.timeSent = dictionary["Timesent"] as! String
+        self.eventMessage = dictionary["EventMessage"] as! String
     }
     
-    init(eventID: Int, timeSent: String, imageString: NSData?){
+    init(eventID: Int, timeSent: String, imageString: NSData?, eventMessage: String){
         self.eventID = eventID
         self.timeSent = timeSent
+        self.eventMessage = eventMessage
         
         self.imageString = imageString
         

@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-                let newEvent = EventStruct(eventID: data.value(forKey: "eventID") as! Int, timeSent: data.value(forKey: "date") as! String, imageString: data.value(forKey: "image") as? NSData)
+                let newEvent = EventStruct(eventID: data.value(forKey: "eventID") as! Int, timeSent: data.value(forKey: "date") as! String, imageString: data.value(forKey: "image") as? NSData, eventMessage: data.value(forKey: "eventMessage") as! String)
                 if !self.events.contains(where: {$0.eventID == newEvent.eventID}){
                     self.events.append(newEvent)
                 }
@@ -81,6 +81,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let createNewEvent = NSManagedObject(entity: entity!, insertInto: context)
                 createNewEvent.setValue(event.eventID, forKey: "eventID")
                 createNewEvent.setValue(event.timeSent, forKey: "date")
+                createNewEvent.setValue(event.eventMessage, forKey: "eventMessage")
             }
             do {
                 try context.save()
@@ -197,6 +198,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.selectedBackgroundView = backgroundView
         
+        cell.eventImageView.roundedImage()
+        cell.eventImageView.image = events[indexPath.row].image
+        cell.eventMessageLabel.text = events[indexPath.row].eventMessage
         cell.eventDateTimeLabel.text = dateFormatter.string(from: date!)//events[indexPath.row].timeSent
         
         return cell
