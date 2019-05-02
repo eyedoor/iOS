@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-                let newEvent = EventStruct(eventID: data.value(forKey: "eventID") as! Int, timeSent: data.value(forKey: "date") as! String, imageString: data.value(forKey: "image") as? NSData, eventMessage: data.value(forKey: "eventMessage") as! String)
+                let newEvent = EventStruct(eventID: data.value(forKey: "eventID") as! Int, timeSent: data.value(forKey: "date") as! String, imageString: data.value(forKey: "image") as? NSData, eventMessage: data.value(forKey: "eventMessage") as? String ?? "Someone visited")
                 if !self.events.contains(where: {$0.eventID == newEvent.eventID}){
                     self.events.append(newEvent)
                 }
@@ -153,10 +153,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         print("refreshing")
         //not full load events   just like the onviewappear
-        deleteAllData(entity: "Event")
-        loadEvents()
         
-        self.eventsTableView.reloadData()
+        QueryService.getEvents{ (events) in
+            if (events.count != self.events.count){
+                self.deleteAllData(entity: "Event")
+                self.loadEvents()
+                
+                self.eventsTableView.reloadData()
+            }
+        }
+        
+        
         refreshControl.endRefreshing()
     }
     

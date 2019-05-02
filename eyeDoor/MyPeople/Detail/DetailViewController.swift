@@ -25,6 +25,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.title = "\(firstName) \(lastName)"
         friendImageView.roundedImage()
         
+        
+        
         QueryService.getFriendEvents(friendID: self.friendID, completion: {(events) in
             DispatchQueue.main.async {
                 self.events = events as! [EventStruct]
@@ -85,7 +87,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
         let date = dateFormatter.date(from: dateString)
-        dateFormatter.dateFormat = "hh:mm a 'on' MMM d, yyyy"
+        dateFormatter.dateFormat = "MMM d, yyyy 'at' hh:mm a"
         
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
@@ -114,5 +116,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
+    
     
 }

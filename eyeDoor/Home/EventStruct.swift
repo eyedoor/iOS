@@ -18,7 +18,7 @@ struct EventStruct {
     init(_ dictionary: [String: Any]) {
         self.eventID = dictionary["EventID"] as! Int
         self.timeSent = dictionary["Timesent"] as! String
-        self.eventMessage = dictionary["EventMessage"] as! String
+        self.eventMessage = dictionary["EventMessage"] as? String ?? "Someone visited"
     }
     
     init(eventID: Int, timeSent: String, imageString: NSData?, eventMessage: String){

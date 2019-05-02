@@ -49,6 +49,9 @@ class StartViewController: UIViewController {
                     defaults.set(nil, forKey: "token")
                     
                     self.present(alertController, animated: true, completion: nil)
+                    
+                    self.loginButton.isEnabled = true
+                    self.signUpButton.isEnabled = true
                 }
                 
             })

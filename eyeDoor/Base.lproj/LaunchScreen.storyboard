@@ -18,21 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eyeDoor" translatesAutoresizingMaskIntoConstraints="NO" id="Teg-TT-bTP">
-                                <rect key="frame" x="87" y="333" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="4t3-2C-1De"/>
-                                    <constraint firstAttribute="width" constant="240" id="Jgu-fq-CUd"/>
-                                </constraints>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fJ9-7v-ePF">
+                                <rect key="frame" x="40.5" y="189" width="333" height="573"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eyeDoorNoBack" translatesAutoresizingMaskIntoConstraints="NO" id="WXg-zy-tdC">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="WUT-AV-EXj"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdC-Eq-zjl">
+                                        <rect key="frame" x="0.0" y="200" width="333" height="373"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="32"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.19295632839202881" green="0.63208448886871338" blue="0.78874903917312622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.14117647059999999" green="0.77647058820000003" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Teg-TT-bTP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4rm-JP-qbo"/>
-                            <constraint firstItem="Teg-TT-bTP" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="9Pb-Q0-tTq"/>
+                            <constraint firstItem="fJ9-7v-ePF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="145" id="BC7-zE-VQq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fJ9-7v-ePF" secondAttribute="bottom" constant="100" id="Zr5-E6-Xfa"/>
+                            <constraint firstItem="fJ9-7v-ePF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xgP-rb-7c0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -40,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eyeDoor" width="512" height="512"/>
+        <image name="eyeDoorNoBack" width="333.33334350585938" height="333.33334350585938"/>
     </resources>
 </document>
