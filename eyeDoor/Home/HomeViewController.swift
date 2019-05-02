@@ -153,15 +153,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         print("refreshing")
         //not full load events   just like the onviewappear
-        
-        QueryService.getEvents{ (events) in
-            if (events.count != self.events.count){
-                self.deleteAllData(entity: "Event")
-                self.loadEvents()
+        self.deleteAllData(entity: "Event")
+        self.loadEvents()
                 
-                self.eventsTableView.reloadData()
-            }
-        }
+        self.eventsTableView.reloadData()
+        
         
         
         refreshControl.endRefreshing()
