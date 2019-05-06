@@ -58,6 +58,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func saveEvents(events: Any){
         ///only add person if they dont exist******
+        
         for event in events as! [EventStruct] {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -157,7 +158,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.loadEvents()
                 
         self.eventsTableView.reloadData()
-        
         
         
         refreshControl.endRefreshing()
