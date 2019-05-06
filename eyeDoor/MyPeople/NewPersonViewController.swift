@@ -34,6 +34,15 @@ class NewPersonViewController: UIViewController {
     
     @IBAction func saveButtonAction(_ sender: Any) {
         
+        let alert = UIAlertController(title: nil, message: "Saving Friend...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
         
         
         let image = personImageView.image!
@@ -44,8 +53,10 @@ class NewPersonViewController: UIViewController {
         let strBase64 = imageData?.base64EncodedString()
         QueryService.createPerson(firstname: firstNameTextField.text!, lastname: lastNameTextField.text!, image: strBase64!, completion: {(success: Bool) -> Void in
             if(success == true){
+                self.dismiss(animated: false, completion: nil)
                 self.performSegue(withIdentifier: "cancel", sender: self)
             } else {
+                self.dismiss(animated: false, completion: nil)
                 let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
