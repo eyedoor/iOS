@@ -29,6 +29,7 @@
 		FFAA2B2D2203AB5A0020AA7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2C2203AB5A0020AA7D /* HomeViewController.swift */; };
 		FFAA2B2F2203DDB20020AA7D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA2B2E2203DDB20020AA7D /* AccountViewController.swift */; };
 		FFC6F6E92278B05C00DB9C19 /* eyeDoorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6F6E82278B05C00DB9C19 /* eyeDoorUITests.swift */; };
+		FFCDF79B228B3DB800704B61 /* eyeDoorUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF79A228B3DB800704B61 /* eyeDoorUnitTests.swift */; };
 		FFFCFFB62234AD67004E94A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB52234AD67004E94A5 /* UIImageView.swift */; };
 		FFFCFFB8223FDC0E004E94A5 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */; };
 		FFFCFFBA223FDCAC004E94A5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFFB9223FDCAC004E94A5 /* Person.swift */; };
@@ -38,6 +39,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		FFC6F6EB2278B05C00DB9C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF7412432202546000826CF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF74124A2202546000826CF7;
+			remoteInfo = eyeDoor;
+		};
+		FFCDF79D228B3DB800704B61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF7412432202546000826CF7 /* Project object */;
 			proxyType = 1;
@@ -75,6 +83,9 @@
 		FFC6F6E62278B05B00DB9C19 /* eyeDoorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eyeDoorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6F6E82278B05C00DB9C19 /* eyeDoorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eyeDoorUITests.swift; sourceTree = "<group>"; };
 		FFC6F6EA2278B05C00DB9C19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFCDF798228B3DB800704B61 /* eyeDoorUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eyeDoorUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCDF79A228B3DB800704B61 /* eyeDoorUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eyeDoorUnitTests.swift; sourceTree = "<group>"; };
+		FFCDF79C228B3DB800704B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFFCFFB52234AD67004E94A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		FFFCFFB7223FDC0E004E94A5 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		FFFCFFB9223FDCAC004E94A5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -92,6 +103,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FFC6F6E32278B05B00DB9C19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCDF795228B3DB800704B61 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -173,6 +191,7 @@
 				FF0F43C72270B5DB009B7DDD /* Model.xcdatamodeld */,
 				FF74124D2202546000826CF7 /* eyeDoor */,
 				FFC6F6E72278B05C00DB9C19 /* eyeDoorUITests */,
+				FFCDF799228B3DB800704B61 /* eyeDoorUnitTests */,
 				FF74124C2202546000826CF7 /* Products */,
 				0D5406DEB98167477677F363 /* Pods */,
 				1B06D02D1F97362EFB270AB3 /* Frameworks */,
@@ -184,6 +203,7 @@
 			children = (
 				FF74124B2202546000826CF7 /* eyeDoor.app */,
 				FFC6F6E62278B05B00DB9C19 /* eyeDoorUITests.xctest */,
+				FFCDF798228B3DB800704B61 /* eyeDoorUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +256,15 @@
 			path = eyeDoorUITests;
 			sourceTree = "<group>";
 		};
+		FFCDF799228B3DB800704B61 /* eyeDoorUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				FFCDF79A228B3DB800704B61 /* eyeDoorUnitTests.swift */,
+				FFCDF79C228B3DB800704B61 /* Info.plist */,
+			);
+			path = eyeDoorUnitTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,6 +305,24 @@
 			productReference = FFC6F6E62278B05B00DB9C19 /* eyeDoorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		FFCDF797228B3DB800704B61 /* eyeDoorUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFCDF7A1228B3DB800704B61 /* Build configuration list for PBXNativeTarget "eyeDoorUnitTests" */;
+			buildPhases = (
+				FFCDF794228B3DB800704B61 /* Sources */,
+				FFCDF795228B3DB800704B61 /* Frameworks */,
+				FFCDF796228B3DB800704B61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFCDF79E228B3DB800704B61 /* PBXTargetDependency */,
+			);
+			name = eyeDoorUnitTests;
+			productName = eyeDoorUnitTests;
+			productReference = FFCDF798228B3DB800704B61 /* eyeDoorUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -297,6 +344,10 @@
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = FF74124A2202546000826CF7;
 					};
+					FFCDF797228B3DB800704B61 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = FF74124A2202546000826CF7;
+					};
 				};
 			};
 			buildConfigurationList = FF7412462202546000826CF7 /* Build configuration list for PBXProject "eyeDoor" */;
@@ -314,6 +365,7 @@
 			targets = (
 				FF74124A2202546000826CF7 /* eyeDoor */,
 				FFC6F6E52278B05B00DB9C19 /* eyeDoorUITests */,
+				FFCDF797228B3DB800704B61 /* eyeDoorUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -330,6 +382,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FFC6F6E42278B05B00DB9C19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCDF796228B3DB800704B61 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -423,6 +482,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFCDF794228B3DB800704B61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCDF79B228B3DB800704B61 /* eyeDoorUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -430,6 +497,11 @@
 			isa = PBXTargetDependency;
 			target = FF74124A2202546000826CF7 /* eyeDoor */;
 			targetProxy = FFC6F6EB2278B05C00DB9C19 /* PBXContainerItemProxy */;
+		};
+		FFCDF79E228B3DB800704B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF74124A2202546000826CF7 /* eyeDoor */;
+			targetProxy = FFCDF79D228B3DB800704B61 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -647,6 +719,48 @@
 			};
 			name = Release;
 		};
+		FFCDF79F228B3DB800704B61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AEMX3T6C2M;
+				INFOPLIST_FILE = eyeDoorUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NathanSchlechte.eyeDoorUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eyeDoor.app/eyeDoor";
+			};
+			name = Debug;
+		};
+		FFCDF7A0228B3DB800704B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AEMX3T6C2M;
+				INFOPLIST_FILE = eyeDoorUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NathanSchlechte.eyeDoorUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eyeDoor.app/eyeDoor";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -673,6 +787,15 @@
 			buildConfigurations = (
 				FFC6F6ED2278B05C00DB9C19 /* Debug */,
 				FFC6F6EE2278B05C00DB9C19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFCDF7A1228B3DB800704B61 /* Build configuration list for PBXNativeTarget "eyeDoorUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCDF79F228B3DB800704B61 /* Debug */,
+				FFCDF7A0228B3DB800704B61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

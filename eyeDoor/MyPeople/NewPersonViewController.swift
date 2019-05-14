@@ -52,8 +52,9 @@ class NewPersonViewController: UIViewController {
         let imageData = reducedImage!.pngData()
         let strBase64 = imageData?.base64EncodedString()
         QueryService.createPerson(firstname: firstNameTextField.text!, lastname: lastNameTextField.text!, image: strBase64!, completion: {(success: Bool) -> Void in
+            //self.dismiss(animated: false, completion: nil)
             if(success == true){
-                self.dismiss(animated: false, completion: nil)
+                //self.dismiss(animated: false, completion: nil)
                 self.performSegue(withIdentifier: "cancel", sender: self)
             } else {
                 self.dismiss(animated: false, completion: nil)
